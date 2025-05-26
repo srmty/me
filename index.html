@@ -217,6 +217,10 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
         .experience-header {
             display: flex;
             justify-content: space-between;
@@ -306,78 +310,85 @@
             left: 100%;
         }
 
-        /* Work Page - Enhanced Glow Box */
+        /* Work Page - Enhanced with arrows */
         .work-content {
             padding: 3rem 0;
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: calc(100vh - 170px);
         }
 
-        .project-box {
-            background: rgba(15, 15, 15, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 3rem;
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-box::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            border-radius: 22px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
-        }
-
-        .project-box.glow::before {
-            opacity: 1;
-            animation: rotate 2s linear infinite;
-        }
-
-        .project-box.glow {
-            box-shadow: 
-                0 0 30px rgba(255, 255, 255, 0.1),
-                0 0 60px rgba(255, 255, 255, 0.05),
-                0 0 90px rgba(255, 255, 255, 0.02);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .project-box h3 {
+        .work-content h2 {
             font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 4rem;
+            letter-spacing: 2px;
+            text-align: left;
+            opacity: 0.7;
+        }
+
+        .project {
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project:last-child {
+            border-bottom: none;
+        }
+
+        .project:hover {
+            transform: translateX(10px);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.2rem;
             font-weight: 400;
             letter-spacing: 1px;
-            margin-bottom: 1rem;
+            transition: all 0.3s ease;
         }
 
-        .project-box p {
-            opacity: 0.7;
-            margin-bottom: 2rem;
+        .project-arrow {
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: translateX(-10px);
+        }
+
+        .project:hover .project-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .project:hover .project-info h3 {
+            opacity: 0.8;
+        }
+
+        .project-info p {
+            opacity: 0.6;
+            margin-bottom: 1rem;
             font-weight: 300;
             line-height: 1.6;
+            font-size: 0.9rem;
         }
 
         .project-meta {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 1rem;
         }
 
         .tech {
@@ -387,80 +398,102 @@
             font-weight: 300;
         }
 
-        /* Research Page - Enhanced Glow Box */
+        .project-year {
+            font-size: 0.75rem;
+            opacity: 0.4;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        /* Research Papers Page */
         .research-content {
             padding: 3rem 0;
             max-width: 600px;
             margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: calc(100vh - 170px);
         }
 
-        .research-box {
-            background: rgba(15, 15, 15, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 3rem;
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
+        .research-content h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 4rem;
+            letter-spacing: 2px;
+            text-align: left;
+            opacity: 0.7;
         }
 
-        .research-box::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            border-radius: 22px;
+        .research-paper {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .research-box.glow::before {
-            opacity: 1;
-            animation: rotate 2s linear infinite;
+        .research-paper:last-child {
+            border-bottom: none;
         }
 
-        .research-box.glow {
-            box-shadow: 
-                0 0 30px rgba(255, 255, 255, 0.1),
-                0 0 60px rgba(255, 255, 255, 0.05),
-                0 0 90px rgba(255, 255, 255, 0.02);
-            border-color: rgba(255, 255, 255, 0.2);
+        .research-paper:hover {
+            transform: translateX(5px);
         }
 
-        .research-box h3 {
-            font-size: 1.3rem;
+        .research-paper:nth-child(1) { animation-delay: 0.1s; }
+        .research-paper:nth-child(2) { animation-delay: 0.2s; }
+        .research-paper:nth-child(3) { animation-delay: 0.3s; }
+        .research-paper:nth-child(4) { animation-delay: 0.4s; }
+
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-paper h3 {
+            font-size: 1.1rem;
             font-weight: 400;
             letter-spacing: 0.5px;
             line-height: 1.4;
-            margin-bottom: 1rem;
+            flex: 1;
         }
 
-        .research-box p {
+        .research-paper h3 a {
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .research-paper h3 a:hover {
             opacity: 0.7;
-            margin-bottom: 2rem;
+        }
+
+        .paper-arrow {
+            font-size: 1rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: translateX(-5px);
+            margin-left: 1rem;
+        }
+
+        .research-paper:hover .paper-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .paper-excerpt {
+            opacity: 0.6;
+            margin-bottom: 1rem;
             font-weight: 300;
             line-height: 1.6;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .paper-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 2rem;
         }
 
         .paper-date {
@@ -477,7 +510,7 @@
             font-weight: 300;
         }
 
-        /* Contact Page - Minimal Icons */
+        /* Contact Page - Minimal Box Design */
         .contact-content {
             display: flex;
             justify-content: center;
@@ -486,9 +519,15 @@
         }
 
         .contact-box {
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 3rem;
             text-align: center;
-            max-width: 300px;
+            max-width: 400px;
             width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
         .contact-box h2 {
@@ -507,62 +546,59 @@
             font-size: 0.9rem;
         }
 
-        .contact-icons {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
             margin-bottom: 2rem;
         }
 
-        .contact-icon {
-            width: 40px;
-            height: 40px;
+        .social-item {
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            color: #fff;
             text-decoration: none;
             font-size: 1.2rem;
             transition: all 0.3s ease;
             cursor: pointer;
-            border-radius: 50%;
-            position: relative;
+            margin: 0 auto;
         }
 
-        .contact-icon::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 1px solid transparent;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .contact-icon:hover {
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
-        .contact-icon:hover::before {
+        .social-item:hover {
+            background: rgba(255, 255, 255, 0.1);
             border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
-        .email-contact {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
+        .email-item {
+            grid-column: span 3;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            color: #fff;
             text-decoration: none;
+            font-size: 0.9rem;
             letter-spacing: 1px;
             font-weight: 300;
             transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid transparent;
         }
 
-        .email-contact:hover {
-            color: #fff;
-            border-bottom-color: rgba(255, 255, 255, 0.2);
+        .email-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         /* Animations */
@@ -574,15 +610,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
             }
         }
 
@@ -657,16 +684,18 @@
                 text-align: center;
             }
 
-            .project-box,
-            .research-box {
-                margin: 0 1rem;
-                padding: 2rem;
+            .work-content,
+            .research-content {
+                padding: 0 1rem;
             }
 
-            .about-text h2 {
+            .work-content h2,
+            .about-text h2,
+            .research-content h2 {
                 font-size: 2rem;
             }
 
+            .project-meta,
             .experience-header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -679,10 +708,16 @@
 
             .contact-box {
                 margin: 0 1rem;
+                padding: 2rem;
             }
 
-            .contact-icons {
-                gap: 1.5rem;
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .email-item {
+                grid-column: span 2;
             }
         }
     </style>
@@ -744,6 +779,33 @@
                             <div class="experience-company">GOOGLE</div>
                             <div class="experience-description">Leading frontend development for next-generation web applications, focusing on performance optimization and user experience design.</div>
                         </div>
+                        
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <div class="experience-role">FULLSTACK DEVELOPER</div>
+                                <div class="experience-duration">2021 - 2023</div>
+                            </div>
+                            <div class="experience-company">MICROSOFT</div>
+                            <div class="experience-description">Developed scalable web applications using modern JavaScript frameworks and cloud technologies.</div>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <div class="experience-role">SOFTWARE ENGINEER</div>
+                                <div class="experience-duration">2019 - 2021</div>
+                            </div>
+                            <div class="experience-company">META</div>
+                            <div class="experience-description">Built and maintained large-scale social media features, optimizing for billions of users worldwide.</div>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <div class="experience-role">JUNIOR DEVELOPER</div>
+                                <div class="experience-duration">2018 - 2019</div>
+                            </div>
+                            <div class="experience-company">APPLE</div>
+                            <div class="experience-description">Started my career developing iOS applications and web interfaces with focus on accessibility and performance.</div>
+                        </div>
                     </div>
                     
                     <div class="skills-list">
@@ -755,6 +817,8 @@
                             <span class="skill">PYTHON</span>
                             <span class="skill">CSS3</span>
                             <span class="skill">HTML5</span>
+                            <span class="skill">MONGODB</span>
+                            <span class="skill">GIT</span>
                         </div>
                     </div>
                 </div>
@@ -766,13 +830,78 @@
     <div id="work" class="page">
         <div class="container">
             <div class="work-content">
-                <div class="project-box" onclick="toggleGlow(this)">
-                    <h3>PROJECT NAME</h3>
-                    <p>A sophisticated web application that demonstrates modern development practices and clean design principles with seamless user interactions.</p>
-                    <div class="project-meta">
-                        <span class="tech">REACT</span>
-                        <span class="tech">NODE.JS</span>
-                        <span class="tech">MONGODB</span>
+                <h2>SELECTED WORK</h2>
+                <div class="projects-grid">
+                    <div class="project fade-in">
+                        <div class="project-header">
+                            <div class="project-info">
+                                <h3>PROJECT NAME ONE</h3>
+                            </div>
+                            <div class="project-arrow">→</div>
+                        </div>
+                        <p>A sophisticated web application that demonstrates modern development practices and clean design principles.</p>
+                        <div class="project-meta">
+                            <div class="project-tech">
+                                <span class="tech">REACT</span>
+                                <span class="tech">NODE.JS</span>
+                                <span class="tech">MONGODB</span>
+                            </div>
+                            <span class="project-year">2024</span>
+                        </div>
+                    </div>
+
+                    <div class="project fade-in">
+                        <div class="project-header">
+                            <div class="project-info">
+                                <h3>PROJECT NAME TWO</h3>
+                            </div>
+                            <div class="project-arrow">→</div>
+                        </div>
+                        <p>An innovative solution that pushes the boundaries of what's possible on the web with seamless interactions.</p>
+                        <div class="project-meta">
+                            <div class="project-tech">
+                                <span class="tech">JAVASCRIPT</span>
+                                <span class="tech">CSS3</span>
+                                <span class="tech">API</span>
+                            </div>
+                            <span class="project-year">2024</span>
+                        </div>
+                    </div>
+
+                    <div class="project fade-in">
+                        <div class="project-header">
+                            <div class="project-info">
+                                <h3>PROJECT NAME THREE</h3>
+                            </div>
+                            <div class="project-arrow">→</div>
+                        </div>
+                        <p>A minimalist approach to complex problems showcasing the beauty of simplicity and thoughtful design.</p>
+                        <div class="project-meta">
+                            <div class="project-tech">
+                                <span class="tech">PYTHON</span>
+                                <span class="tech">FLASK</span>
+                                <span class="tech">SQLITE</span>
+                            </div>
+                            <span class="project-year">2023</span>
+                        </div>
+                    </div>
+
+                    <div class="project fade-in">
+                        <div class="project-header">
+                            <div class="project-info">
+                                <h3>PROJECT NAME FOUR</h3>
+                            </div>
+                            <div class="project-arrow">→</div>
+                        </div>
+                        <p>Mobile-first responsive design emphasizing performance and user experience across all devices.</p>
+                        <div class="project-meta">
+                            <div class="project-tech">
+                                <span class="tech">REACT NATIVE</span>
+                                <span class="tech">TYPESCRIPT</span>
+                                <span class="tech">FIREBASE</span>
+                            </div>
+                            <span class="project-year">2023</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -783,13 +912,43 @@
     <div id="research" class="page">
         <div class="container">
             <div class="research-content">
-                <div class="research-box" onclick="toggleGlow(this)">
-                    <h3>Machine Learning Approaches to Web Performance Optimization</h3>
-                    <p>A comprehensive study on implementing machine learning algorithms to predict and optimize web application performance metrics in real-time environments.</p>
-                    <div class="paper-meta">
-                        <span class="paper-date">MAR 15, 2024</span>
-                        <span class="paper-status">PUBLISHED</span>
-                    </div>
+                <h2>RESEARCH PAPERS</h2>
+                <div class="research-grid">
+                    <article class="research-paper">
+                        <div class="paper-header">
+                            <h3><a href="#">Quantum Computing Applications in Cryptographic Security</a></h3>
+                            <div class="paper-arrow">→</div>
+                        </div>
+                        <p class="paper-excerpt">Exploring the implications of quantum computing on current cryptographic methods and proposing new security frameworks for the post-quantum era.</p>
+                        <div class="paper-meta">
+                            <span class="paper-date">FEB 10, 2024</span>
+                            <span class="paper-status">PUBLISHED</span>
+                        </div>
+                    </article>
+
+                    <article class="research-paper">
+                        <div class="paper-header">
+                            <h3><a href="#">Advanced CSS Grid Patterns for Responsive Design Systems</a></h3>
+                            <div class="paper-arrow">→</div>
+                        </div>
+                        <p class="paper-excerpt">Comprehensive analysis of CSS Grid implementation patterns and their impact on modern responsive design methodologies and user experience.</p>
+                        <div class="paper-meta">
+                            <span class="paper-date">JAN 22, 2024</span>
+                            <span class="paper-status">ACCEPTED</span>
+                        </div>
+                    </article>
+
+                    <article class="research-paper">
+                        <div class="paper-header">
+                            <h3><a href="#">Neural Networks for Automated Code Optimization</a></h3>
+                            <div class="paper-arrow">→</div>
+                        </div>
+                        <p class="paper-excerpt">Investigation into using deep learning models to automatically optimize code performance and identify potential security vulnerabilities in large codebases.</p>
+                        <div class="paper-meta">
+                            <span class="paper-date">JAN 08, 2024</span>
+                            <span class="paper-status">IN PROGRESS</span>
+                        </div>
+                    </article>
                 </div>
             </div>
         </div>
@@ -800,23 +959,50 @@
         <div class="container">
             <div class="contact-content">
                 <div class="contact-box">
-                    <h2>LET'S CONNECT</h2>
-                    <p>Always open to discussing new opportunities, collaborations, or just having a conversation about technology and design.</p>
+                    <h2>GET IN TOUCH</h2>
+                    <p>Let's connect and discuss new opportunities, creative projects, or collaborations.</p>
                     
-                    <div class="contact-icons">
-                        <a href="https://twitter.com/yourhandle" class="contact-icon" target="_blank">
-                            <span>𝕏</span>
+                    <div class="social-grid">
+                        <a href="#" class="social-item" title="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
                         </a>
-                        <a href="https://linkedin.com/in/yourprofile" class="contact-icon" target="_blank">
-                            <span>in</span>
+                        
+                        <a href="#" class="social-item" title="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
                         </a>
-                        <a href="https://github.com/yourusername" class="contact-icon" target="_blank">
-                            <span>gh</span>
+                        
+                        <a href="#" class="social-item" title="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
                         </a>
-                    </div>
-                    
-                    <div>
-                        <a href="mailto:your.email@example.com" class="email-contact">
+                        
+                        <a href="#" class="social-item" title="Dribbble">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.814zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.47.985.68 1.486.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z"/>
+                            </svg>
+                        </a>
+                        
+                        <a href="#" class="social-item" title="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        
+                        <a href="#" class="social-item" title="Behance">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.938 4.503c.702 0 1.34.06 1.92.188.577.13 1.07.33 1.485.61.41.28.733.65.96 1.12.225.47.34 1.05.34 1.73 0 .74-.17 1.36-.507 1.86-.338.5-.837.9-1.498 1.19.906.26 1.576.72 2.022 1.37.448.66.665 1.45.665 2.36 0 .75-.13 1.39-.41 1.93-.28.55-.67 1-1.16 1.35-.48.348-1.05.6-1.67.76-.61.16-1.25.24-1.91.24H0V4.51h6.938v-.007zM3.495 8.48h2.563c.62 0 1.16-.062 1.62-.188.46-.125.85-.35 1.14-.67.29-.32.43-.73.43-1.23 0-.5-.14-.89-.42-1.1-.28-.21-.7-.31-1.26-.31H3.495v3.51zm0 7.01h2.668c.65 0 1.22-.05 1.71-.15.49-.1.89-.26 1.2-.48.31-.22.54-.52.68-.89.14-.37.21-.82.21-1.35 0-.68-.17-1.22-.5-1.61-.33-.39-.87-.58-1.62-.58H3.495v5.05zm9.156-16.48c.84 0 1.59.15 2.26.45.66.3 1.22.74 1.67 1.3.45.56.78 1.25.99 2.07.21.82.32 1.76.32 2.83 0 .69-.03 1.27-.1 1.74-.05.47-.14.87-.27 1.2-.13.33-.3.59-.5.78-.2.19-.45.30-.73.34l-.26-.06H21l-1.24-4.61c-.22-.84-.53-1.57-.93-2.18-.4-.61-.90-1.09-1.52-1.44-.62-.35-1.36-.53-2.21-.53-.84 0-1.58.18-2.2.53-.62.35-1.12.83-1.52 1.44-.4.61-.71 1.34-.93 2.18L12.635 16H9.5c-.23-.04-.48-.15-.73-.34-.25-.19-.42-.45-.5-.78-.08-.33-.17-.73-.27-1.2-.1-.47-.1-1.05-.1-1.74 0-1.07.1-2.01.32-2.83.22-.82.54-1.51.99-2.07.45-.56 1.01-1.00 1.67-1.30.66-.3 1.42-.45 2.26-.45zm8.38 5.66c-.12-.49-.3-.85-.54-1.08-.24-.23-.54-.35-.9-.35-.36 0-.66.12-.9.35-.23.23-.41.59-.54 1.08H20.99z"/>
+                            </svg>
+                        </a>
+                        
+                        <a href="mailto:your.email@example.com" class="email-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
                             your.email@example.com
                         </a>
                     </div>
@@ -830,7 +1016,7 @@
         const navItems = document.querySelectorAll('.nav-item');
         const pages = document.querySelectorAll('.page');
 
-        function showPage(pageId) {
+        function showPage(targetPage) {
             // Hide all pages
             pages.forEach(page => {
                 page.classList.remove('active');
@@ -841,131 +1027,116 @@
                 item.classList.remove('active');
             });
 
-            // Show selected page
-            const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.classList.add('active');
-            }
+            // Show target page
+            document.getElementById(targetPage).classList.add('active');
 
-            // Add active class to corresponding nav item
-            const activeNavItem = document.querySelector(`[data-page="${pageId}"]`);
-            if (activeNavItem) {
-                activeNavItem.classList.add('active');
-            }
+            // Add active class to clicked nav item
+            document.querySelector(`[data-page="${targetPage}"]`).classList.add('active');
 
-            // Trigger animations for fade-in elements
-            const fadeElements = targetPage.querySelectorAll('.fade-in');
-            fadeElements.forEach((el, index) => {
-                el.style.animationDelay = `${index * 0.1}s`;
-                el.classList.add('fade-in');
-            });
+            // Trigger fade-in animations for work page
+            if (targetPage === 'work') {
+                const projects = document.querySelectorAll('.project');
+                projects.forEach((project, index) => {
+                    project.style.animationDelay = `${index * 0.2}s`;
+                });
+            }
         }
 
-        // Toggle glow effect for project and research boxes
-        function toggleGlow(element) {
-            element.classList.toggle('glow');
-        }
-
-        // Add click event listeners to nav items
         navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const pageId = item.getAttribute('data-page');
-                showPage(pageId);
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetPage = item.getAttribute('data-page');
+                showPage(targetPage);
+            });
+        });
+
+        // Loading animation
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.loading').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Smooth page transitions
+        function fadeTransition(callback) {
+            document.body.style.opacity = '0.5';
+            setTimeout(() => {
+                callback();
+                document.body.style.opacity = '1';
+            }, 200);
+        }
+
+        // Enhanced navigation with transitions
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetPage = item.getAttribute('data-page');
+                
+                fadeTransition(() => {
+                    showPage(targetPage);
+                });
             });
         });
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            const currentActive = document.querySelector('.nav-item.active');
-            const currentIndex = Array.from(navItems).indexOf(currentActive);
-            
-            if (e.key === 'ArrowLeft' && currentIndex > 0) {
-                const prevPage = navItems[currentIndex - 1].getAttribute('data-page');
-                showPage(prevPage);
-            } else if (e.key === 'ArrowRight' && currentIndex < navItems.length - 1) {
-                const nextPage = navItems[currentIndex + 1].getAttribute('data-page');
-                showPage(nextPage);
+            const currentPage = document.querySelector('.page.active').id;
+            const pageOrder = ['home', 'about', 'work', 'research', 'contact'];
+            const currentIndex = pageOrder.indexOf(currentPage);
+
+            if (e.key === 'ArrowRight' && currentIndex < pageOrder.length - 1) {
+                showPage(pageOrder[currentIndex + 1]);
+            } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                showPage(pageOrder[currentIndex - 1]);
             }
         });
 
-        // Loading animation
-        window.addEventListener('load', () => {
-            const loading = document.querySelector('.loading');
-            setTimeout(() => {
-                loading.classList.add('hidden');
-            }, 1500);
-        });
+        // Add subtle animations on scroll for work page
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-        // Dynamic skill hover effects
-        const skills = document.querySelectorAll('.skill');
-        skills.forEach(skill => {
-            skill.addEventListener('mouseenter', () => {
-                // Create ripple effect
-                const ripple = document.createElement('span');
-                ripple.style.position = 'absolute';
-                ripple.style.width = '100%';
-                ripple.style.height = '100%';
-                ripple.style.top = '0';
-                ripple.style.left = '0';
-                ripple.style.background = 'rgba(255, 255, 255, 0.1)';
-                ripple.style.borderRadius = '25px';
-                ripple.style.animation = 'ripple 0.6s ease-out';
-                skill.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
             });
+        }, observerOptions);
+
+        // Observe project elements
+        document.querySelectorAll('.project').forEach(project => {
+            project.style.opacity = '0';
+            project.style.transform = 'translateY(50px)';
+            project.style.transition = 'all 0.8s ease';
+            observer.observe(project);
         });
 
-        // Add ripple animation keyframe
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                0% {
-                    transform: scale(0);
-                    opacity: 1;
-                }
-                100% {
-                    transform: scale(1);
-                    opacity: 0;
-                }
-            }
+        // Add cursor effect
+        const cursor = document.createElement('div');
+        cursor.style.cssText = `
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
         `;
-        document.head.appendChild(style);
+        document.body.appendChild(cursor);
 
-        // Add parallax effect to about image
-        const aboutImage = document.querySelector('.about-img');
-        if (aboutImage) {
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const parallax = scrolled * 0.2;
-                aboutImage.style.transform = `translateY(${parallax}px)`;
-            });
-        }
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', () => {
-            // Set initial page
-            showPage('home');
-        });
-
-        // Add subtle mouse movement parallax
         document.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-            
-            const logo = document.querySelector('.logo');
-            const navDock = document.querySelector('.nav-dock');
-            
-            if (logo) {
-                logo.style.transform = `translate(${mouseX * 10}px, ${mouseY * 10}px)`;
-            }
-            
-            if (navDock) {
-                navDock.style.transform = `translateX(-50%) translate(${mouseX * 5}px, ${mouseY * 5}px)`;
-            }
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
         });
+
+        // Hide cursor on touch devices
+        if ('ontouchstart' in window) {
+            cursor.style.display = 'none';
+        }
     </script>
 </body>
 </html>
