@@ -11,12 +11,12 @@
             box-sizing: border-box;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap');
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Sour Gummy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #000;
-            color: #fff;
+            color: #f8f8ff;
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -664,15 +664,7 @@
         }
 
         .loader {
-            width: 2px;
-            height: 40px;
-            background: #fff;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+            display: none;
         }
 
         /* Responsive */
@@ -756,18 +748,27 @@
 <body>
     <div class="loading">
         <div class="loader"></div>
+        <div style="margin-top: 2rem; color: #f8f8ff; font-size: 1.2rem; letter-spacing: 2px;">Loading...</div>
     </div>
-
-    <div class="logo">YOUR NAME</div>
 
     <nav>
         <div class="nav-dock">
             <ul class="nav-links">
-                <li><button class="nav-item active" data-page="home">◦</button></li>
-                <li><button class="nav-item" data-page="about">―</button></li>
-                <li><button class="nav-item" data-page="work">□</button></li>
-                <li><button class="nav-item" data-page="research">◯</button></li>
-                <li><button class="nav-item" data-page="contact">✓</button></li>
+                <li><button class="nav-item active" data-page="home" title="Home">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12L12 5l9 7"/><rect x="6" y="12" width="12" height="7" rx="2"/><path d="M9 21V17a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg>
+                </button></li>
+                <li><button class="nav-item" data-page="about" title="About">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-3.3137 3.134-6 8-6s8 2.6863 8 6"/></svg>
+                </button></li>
+                <li><button class="nav-item" data-page="work" title="Work">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg>
+                </button></li>
+                <li><button class="nav-item" data-page="research" title="Research">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19V6a2 2 0 0 1 2-2h7"/><path d="M22 19V6a2 2 0 0 0-2-2h-7"/><path d="M12 5v14"/></svg>
+                </button></li>
+                <li><button class="nav-item" data-page="contact" title="Contact">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+                </button></li>
             </ul>
         </div>
     </nav>
@@ -777,6 +778,7 @@
         <div class="container">
             <div class="home-content">
                 <div class="hero-text">
+                    <img src="image.png" alt="Profile Image" style="display:block;margin:0 auto 2rem auto;max-width:160px;width:100%;height:auto;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.15);">
                     <h1>YOUR NAME</h1>
                     <p class="subtitle">CREATIVE DEVELOPER</p>
                     <p>Crafting digital experiences with precision and creativity. Specializing in modern web development and innovative design solutions.</p>
@@ -788,62 +790,53 @@
     <!-- ABOUT PAGE -->
     <div id="about" class="page">
         <div class="container">
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="https://via.placeholder.com/350x470/000000/ffffff?text=YOUR+PHOTO" alt="About" class="about-img">
-                </div>
-                <div class="about-text">
-                    <h2>ABOUT</h2>
-                    <p>I'm a passionate developer with a keen eye for minimalist design and clean code. My journey in web development spans over several years, during which I've honed my skills in creating sophisticated digital experiences.</p>
-                    
-                    <p>I believe in the power of simplicity – that the most elegant solutions are often the most minimal ones. My approach combines technical expertise with artistic sensibility to deliver products that are both functional and beautiful.</p>
-                    
-                    <p>When I'm not coding, you can find me exploring new technologies, reading about design philosophy, or enjoying the quiet moments that inspire creativity.</p>
-                    
-                    <div class="experience-section">
-                        <h3>EXPERIENCE</h3>
-                        <div class="experience-item">
-                            <div class="experience-header">
-                                <div class="experience-role">Senior Frontend Developer</div>
-                                <div class="experience-duration">2022 - PRESENT</div>
-                            </div>
-                            <div class="experience-company">Tech Innovations Inc.</div>
-                            <div class="experience-description">Leading frontend development for modern web applications, focusing on performance optimization and user experience enhancement.</div>
+            <div class="about-content" style="display:block;max-width:600px;margin:0 auto;padding:3rem 0;">
+                <h2 style="font-size:1.5rem;font-weight:300;margin-bottom:4rem;letter-spacing:2px;text-align:left;opacity:0.7;">ABOUT</h2>
+                <p class="about-excerpt" style="opacity:0.6;margin-bottom:2rem;font-weight:300;line-height:1.6;font-size:0.95rem;">I'm a passionate developer with a keen eye for minimalist design and clean code. My journey in web development spans over several years, during which I've honed my skills in creating sophisticated digital experiences.</p>
+                <p class="about-excerpt" style="opacity:0.6;margin-bottom:2rem;font-weight:300;line-height:1.6;font-size:0.95rem;">I believe in the power of simplicity – that the most elegant solutions are often the most minimal ones. My approach combines technical expertise with artistic sensibility to deliver products that are both functional and beautiful.</p>
+                <p class="about-excerpt" style="opacity:0.6;margin-bottom:2rem;font-weight:300;line-height:1.6;font-size:0.95rem;">When I'm not coding, you can find me exploring new technologies, reading about design philosophy, or enjoying the quiet moments that inspire creativity.</p>
+                <div class="experience-section">
+                    <h3 style="font-size:1rem;letter-spacing:2px;margin-bottom:2rem;opacity:0.7;">EXPERIENCE</h3>
+                    <div class="experience-item" style="padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+                        <div class="experience-header" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+                            <div class="experience-role" style="font-size:1rem;font-weight:400;letter-spacing:1px;">Senior Frontend Developer</div>
+                            <div class="experience-duration" style="font-size:0.75rem;opacity:0.4;letter-spacing:1px;font-weight:300;">2022 - PRESENT</div>
                         </div>
-                        <div class="experience-item">
-                            <div class="experience-header">
-                                <div class="experience-role">Full Stack Developer</div>
-                                <div class="experience-duration">2020 - 2022</div>
-                            </div>
-                            <div class="experience-company">Digital Solutions Ltd.</div>
-                            <div class="experience-description">Developed and maintained full-stack applications using modern technologies, collaborated with cross-functional teams.</div>
-                        </div>
-                        <div class="experience-item">
-                            <div class="experience-header">
-                                <div class="experience-role">Web Developer</div>
-                                <div class="experience-duration">2018 - 2020</div>
-                            </div>
-                            <div class="experience-company">Creative Agency</div>
-                            <div class="experience-description">Created responsive websites and web applications for various clients, focusing on clean code and modern design principles.</div>
-                        </div>
+                        <div class="experience-company" style="font-size:0.85rem;opacity:0.6;margin-bottom:0.5rem;letter-spacing:0.5px;">Tech Innovations Inc.</div>
+                        <div class="experience-description" style="font-size:0.85rem;opacity:0.5;line-height:1.6;font-weight:300;">Leading frontend development for modern web applications, focusing on performance optimization and user experience enhancement.</div>
                     </div>
-                    
-                    <div class="skills-list">
-                        <h3>EXPERTISE</h3>
-                        <div class="skills">
-                            <div class="skill">JavaScript</div>
-                            <div class="skill">React</div>
-                            <div class="skill">Vue.js</div>
-                            <div class="skill">Node.js</div>
-                            <div class="skill">TypeScript</div>
-                            <div class="skill">Python</div>
-                            <div class="skill">HTML/CSS</div>
-                            <div class="skill">Three.js</div>
-                            <div class="skill">GraphQL</div>
-                            <div class="skill">MongoDB</div>
-                            <div class="skill">PostgreSQL</div>
-                            <div class="skill">AWS</div>
+                    <div class="experience-item" style="padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+                        <div class="experience-header" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+                            <div class="experience-role" style="font-size:1rem;font-weight:400;letter-spacing:1px;">Full Stack Developer</div>
+                            <div class="experience-duration" style="font-size:0.75rem;opacity:0.4;letter-spacing:1px;font-weight:300;">2020 - 2022</div>
                         </div>
+                        <div class="experience-company" style="font-size:0.85rem;opacity:0.6;margin-bottom:0.5rem;letter-spacing:0.5px;">Digital Solutions Ltd.</div>
+                        <div class="experience-description" style="font-size:0.85rem;opacity:0.5;line-height:1.6;font-weight:300;">Developed and maintained full-stack applications using modern technologies, collaborated with cross-functional teams.</div>
+                    </div>
+                    <div class="experience-item" style="padding:1.5rem 0;">
+                        <div class="experience-header" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+                            <div class="experience-role" style="font-size:1rem;font-weight:400;letter-spacing:1px;">Web Developer</div>
+                            <div class="experience-duration" style="font-size:0.75rem;opacity:0.4;letter-spacing:1px;font-weight:300;">2018 - 2020</div>
+                        </div>
+                        <div class="experience-company" style="font-size:0.85rem;opacity:0.6;margin-bottom:0.5rem;letter-spacing:0.5px;">Creative Agency</div>
+                        <div class="experience-description" style="font-size:0.85rem;opacity:0.5;line-height:1.6;font-weight:300;">Created responsive websites and web applications for various clients, focusing on clean code and modern design principles.</div>
+                    </div>
+                </div>
+                <div class="skills-list">
+                    <h3 style="font-size:1rem;letter-spacing:2px;margin-bottom:1rem;opacity:0.7;">EXPERTISE</h3>
+                    <div class="skills" style="display:flex;flex-wrap:wrap;gap:1rem;">
+                        <div class="skill">JavaScript</div>
+                        <div class="skill">React</div>
+                        <div class="skill">Vue.js</div>
+                        <div class="skill">Node.js</div>
+                        <div class="skill">TypeScript</div>
+                        <div class="skill">Python</div>
+                        <div class="skill">HTML/CSS</div>
+                        <div class="skill">Three.js</div>
+                        <div class="skill">GraphQL</div>
+                        <div class="skill">MongoDB</div>
+                        <div class="skill">PostgreSQL</div>
+                        <div class="skill">AWS</div>
                     </div>
                 </div>
             </div>
@@ -939,7 +932,13 @@
             </div>
         </div>
     </div>
-<div class="research-papers">
+
+    <!-- RESEARCH PAGE -->
+    <div id="research" class="page">
+        <div class="container">
+            <div class="research-content">
+                <h2>RESEARCH PAPERS</h2>
+                <div class="research-papers">
                     <article class="research-paper">
                         <div class="paper-header">
                             <h3><a href="#">Machine Learning Approaches to Web Performance Optimization</a></h3>
@@ -1125,4 +1124,4 @@
         });
     </script>
 </body>
-</html>
+</html> 
