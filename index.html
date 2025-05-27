@@ -12,11 +12,12 @@
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
         body {
             font-family: 'Sour Gummy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #000;
-            color: #f8f8ff;
+            color: #ffffff;
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -37,9 +38,9 @@
         }
 
         .nav-dock {
-            background: rgba(15, 15, 15, 0.9);
+            background: rgba(15, 15, 15, 0.95);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 24px;
             padding: 0.8rem 1.2rem;
             display: flex;
@@ -64,7 +65,7 @@
             border-radius: 14px;
             background: transparent;
             border: none;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.7);
             cursor: pointer;
             transition: all 0.2s ease;
             font-size: 16px;
@@ -72,14 +73,14 @@
         }
 
         .nav-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.95);
             transform: translateY(-2px);
         }
 
         .nav-item.active {
-            background: rgba(255, 255, 255, 0.12);
-            color: #fff;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
             transform: translateY(-2px);
         }
 
@@ -88,7 +89,7 @@
             position: absolute;
             width: 6px;
             height: 6px;
-            background: #fff;
+            background: #ffffff;
             border-radius: 50%;
             bottom: -12px;
             left: 50%;
@@ -104,7 +105,7 @@
             font-weight: 600;
             letter-spacing: 2px;
             z-index: 1000;
-            color: #fff;
+            color: #ffffff;
         }
 
         /* Page Content */
@@ -139,75 +140,104 @@
             letter-spacing: 3px;
             opacity: 0;
             animation: fadeInUp 1s ease 0.5s forwards;
+            color: #ffffff;
         }
 
         .hero-text .subtitle {
             font-size: 1rem;
-            opacity: 0.7;
+            opacity: 0.9;
             letter-spacing: 2px;
             margin-bottom: 2rem;
             font-weight: 300;
             opacity: 0;
             animation: fadeInUp 1s ease 1s forwards;
+            color: #ffffff;
         }
 
         .hero-text p {
             font-size: 1rem;
-            opacity: 0.6;
+            opacity: 0.8;
             font-weight: 300;
             line-height: 1.8;
             opacity: 0;
             animation: fadeInUp 1s ease 1.5s forwards;
+            color: #ffffff;
+        }
+
+        .home-quote {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.25rem;
+            color: #fff;
+            opacity: 0.85;
+            margin-top: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .home-quote-quoter {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.05rem;
+            color: #fff;
+            opacity: 0.7;
+            text-align: center;
+            margin-bottom: 0.5rem;
         }
 
         /* About Page - Fixed Layout */
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 6rem;
+            grid-template-columns: 1fr;
+            gap: 3rem;
             align-items: start;
             padding: 3rem 0;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
         }
 
         .about-image {
-            position: sticky;
-            top: 70px;
-            display: flex;
-            justify-content: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
 
         .about-img {
             width: 100%;
-            max-width: 350px;
-            aspect-ratio: 3/4;
+            height: 100%;
             object-fit: cover;
-            filter: grayscale(100%);
-            transition: filter 0.3s ease;
-            border-radius: 8px;
+            transition: transform 0.3s ease;
         }
 
-        .about-img:hover {
-            filter: grayscale(0%);
+        .about-image:hover .about-img {
+            transform: scale(1.05);
         }
 
         .about-text {
             width: 100%;
         }
 
-        .about-text h2 {
-            font-size: 2.5rem;
-            font-weight: 300;
+        .about-text h2,
+        .about-content h2 {
+            font-size: 2.2rem !important;
+            font-weight: 900 !important;
             margin-bottom: 2rem;
             letter-spacing: 2px;
+            color: #ffffff;
         }
 
         .about-text p {
             margin-bottom: 2rem;
             font-weight: 300;
-            opacity: 0.8;
+            opacity: 0.85;
             line-height: 1.8;
+            color: #ffffff;
         }
 
         .experience-section {
@@ -319,6 +349,42 @@
             left: 100%;
         }
 
+        /* About section link styles */
+        .about-link {
+            color: #ffffff;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-weight: 800 !important;
+        }
+
+        .about-link strong {
+            font-weight: 900 !important;
+        }
+
+        .about-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ffffff;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+
+        .about-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .about-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
         /* Work Page - Updated to match Research style */
         .work-content {
             padding: 3rem 0;
@@ -374,7 +440,7 @@
         }
 
         .project h3 a {
-            color: #fff;
+            color: #ffffff;
             text-decoration: none;
             transition: opacity 0.3s ease;
         }
@@ -397,11 +463,12 @@
         }
 
         .project-excerpt {
-            opacity: 0.6;
+            opacity: 0.85;
             margin-bottom: 1rem;
             font-weight: 300;
             line-height: 1.6;
             font-size: 0.85rem;
+            color: #ffffff;
         }
 
         .project-meta {
@@ -484,7 +551,7 @@
         }
 
         .research-paper h3 a {
-            color: #fff;
+            color: #ffffff;
             text-decoration: none;
             transition: opacity 0.3s ease;
         }
@@ -507,11 +574,12 @@
         }
 
         .paper-excerpt {
-            opacity: 0.6;
+            opacity: 0.85;
             margin-bottom: 1rem;
             font-weight: 300;
             line-height: 1.6;
             font-size: 0.85rem;
+            color: #ffffff;
         }
 
         .paper-meta {
@@ -543,9 +611,9 @@
         }
 
         .contact-box {
-            background: rgba(15, 15, 15, 0.8);
+            background: rgba(15, 15, 15, 0.95);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 20px;
             padding: 3rem;
             text-align: center;
@@ -559,15 +627,17 @@
             font-weight: 300;
             margin-bottom: 2rem;
             letter-spacing: 2px;
-            opacity: 0.9;
+            opacity: 0.95;
+            color: #ffffff;
         }
 
         .contact-box p {
             margin-bottom: 3rem;
-            opacity: 0.6;
+            opacity: 0.85;
             font-weight: 300;
             line-height: 1.6;
             font-size: 0.9rem;
+            color: #ffffff;
         }
 
         .social-grid {
@@ -583,10 +653,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 16px;
-            color: #fff;
+            color: #ffffff;
             text-decoration: none;
             font-size: 1.2rem;
             transition: all 0.3s ease;
@@ -595,8 +665,8 @@
         }
 
         .social-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
@@ -608,10 +678,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 14px;
-            color: #fff;
+            color: #ffffff;
             text-decoration: none;
             font-size: 0.9rem;
             letter-spacing: 1px;
@@ -620,8 +690,8 @@
         }
 
         .email-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
         }
 
@@ -701,8 +771,10 @@
             }
 
             .about-image {
-                position: static;
-                justify-content: center;
+                position: relative;
+                width: 90px;
+                height: 90px;
+                margin: 0 auto 2rem auto;
             }
 
             .work-content,
@@ -743,6 +815,12 @@
                 grid-column: span 2;
             }
         }
+
+        .arrow-nav:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 16px 4px #fff, 0 4px 16px rgba(0,0,0,0.25);
+            background: rgba(30,30,30,0.95);
+        }
     </style>
 </head>
 <body>
@@ -760,11 +838,14 @@
                 <li><button class="nav-item" data-page="about" title="About">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-3.3137 3.134-6 8-6s8 2.6863 8 6"/></svg>
                 </button></li>
-                <li><button class="nav-item" data-page="work" title="Work">
+                <li><button class="nav-item" data-page="project" title="Project">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg>
                 </button></li>
-                <li><button class="nav-item" data-page="research" title="Research">
+                <li><button class="nav-item" data-page="research" title="Research Papers I've Implemented">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19V6a2 2 0 0 1 2-2h7"/><path d="M22 19V6a2 2 0 0 0-2-2h-7"/><path d="M12 5v14"/></svg>
+                </button></li>
+                <li><button class="nav-item" data-page="blog" title="Blog">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                 </button></li>
                 <li><button class="nav-item" data-page="contact" title="Contact">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
@@ -773,15 +854,29 @@
         </div>
     </nav>
 
+    <!-- Page Navigation Arrows -->
+    <button id="arrow-left" title="Previous Page" class="arrow-nav" style="position:fixed;bottom:2rem;left:2rem;z-index:1100;background:rgba(15,15,15,0.85);border:1px solid rgba(255,255,255,0.12);border-radius:24px;width:auto;min-width:48px;height:48px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.15rem;box-shadow:0 4px 16px rgba(0,0,0,0.2);cursor:pointer;transition:background 0.2s,padding 0.2s; padding:0 1.2rem;gap:0.5rem;">
+        <span style="font-size:1.5rem;">&#8592;</span>
+        <span id="arrow-left-label"></span>
+    </button>
+    <button id="arrow-right" title="Next Page" class="arrow-nav" style="position:fixed;bottom:2rem;right:2rem;z-index:1100;background:rgba(15,15,15,0.85);border:1px solid rgba(255,255,255,0.12);border-radius:24px;width:auto;min-width:48px;height:48px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.15rem;box-shadow:0 4px 16px rgba(0,0,0,0.2);cursor:pointer;transition:background 0.2s,padding 0.2s; padding:0 1.2rem;gap:0.5rem;">
+        <span id="arrow-right-label"></span>
+        <span style="font-size:1.5rem;">&#8594;</span>
+    </button>
+
     <!-- HOME PAGE -->
     <div id="home" class="page active">
         <div class="container">
             <div class="home-content">
                 <div class="hero-text">
-                    <img src="image.png" alt="Profile Image" style="display:block;margin:0 auto 2rem auto;max-width:160px;width:100%;height:auto;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.15);">
-                    <h1>YOUR NAME</h1>
-                    <p class="subtitle">CREATIVE DEVELOPER</p>
-                    <p>Crafting digital experiences with precision and creativity. Specializing in modern web development and innovative design solutions.</p>
+                    <a href="#blackhole" id="blackhole-link" title="Click for a surprise!">
+                        <img src="image.png" alt="Profile Image" style="display:block;margin:0 auto 2rem auto;max-width:160px;width:100%;height:auto;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.15);">
+                    </a>
+                    <h1>SMRUTI</h1>
+                    <p class="subtitle">A LEARNER</p>
+                    <p>I study math. I code. I sleep. I repeat.</p>
+                    <div class="home-quote">“I truly believe that we are the creators of our own destiny and our own paths and what we really want.”</div>
+                    <div class="home-quote-quoter">— Novak Djokovic</div>
                 </div>
             </div>
         </div>
@@ -790,14 +885,41 @@
     <!-- ABOUT PAGE -->
     <div id="about" class="page">
         <div class="container">
-            <div class="about-content" style="display:block;max-width:600px;margin:0 auto;padding:3rem 0;">
-                <h2 style="font-size:1.5rem;font-weight:300;margin-bottom:4rem;letter-spacing:2px;text-align:left;opacity:0.7;">ABOUT</h2>
-                <p class="about-excerpt" style="opacity:0.6;margin-bottom:2rem;font-weight:300;line-height:1.6;font-size:0.95rem;">I'm a passionate developer with a keen eye for minimalist design and clean code. My journey in web development spans over several years, during which I've honed my skills in creating sophisticated digital experiences.</p>
-                <p class="about-excerpt" style="opacity:0.6;margin-bottom:2rem;font-weight:300;line-height:1.6;font-size:0.95rem;">I believe in the power of simplicity – that the most elegant solutions are often the most minimal ones. My approach combines technical expertise with artistic sensibility to deliver products that are both functional and beautiful.</p>
-                <p class="about-excerpt" style="opacity:0.6;margin-bottom:2rem;font-weight:300;line-height:1.6;font-size:0.95rem;">When I'm not coding, you can find me exploring new technologies, reading about design philosophy, or enjoying the quiet moments that inspire creativity.</p>
+            <div class="about-content about-main fade-in" style="display:block;max-width:600px;margin:0 auto;padding:3rem 0;">
+                <div class="about-image">
+                    <img src="pp.png" alt="Smruti's Profile" class="about-img">
+                </div>
+                <h2 class="about-title" style="font-size:2.2rem;font-weight:900;margin-bottom:2rem;letter-spacing:2px;text-align:left;opacity:1;">ABOUT</h2>
+
+                <p style="opacity:0.7;margin-bottom:1rem;font-weight:300;line-height:1.6;font-size:0.95rem;">
+                    I'm Smruti, studying Mathematics at <a href="https://en.wikipedia.org/wiki/National_Institute_of_Technology_Rourkela" class="about-link" target="_blank"><strong>NIT Rourkela</strong></a>.
+                </p>
+                <p style="opacity:0.7;margin-bottom:1rem;font-weight:300;line-height:1.6;font-size:0.95rem;">
+                    My interests: <a href="https://en.wikipedia.org/wiki/Mathematics" class="about-link" target="_blank"><strong>Mathematics</strong></a>, <a href="https://en.wikipedia.org/wiki/Computer_vision" class="about-link" target="_blank"><strong>Computer Vision</strong></a>, <a href="https://en.wikipedia.org/wiki/Large_language_model" class="about-link" target="_blank"><strong>LLMs</strong></a>, and problem solving.
+                </p>
+                <p style="opacity:0.7;margin-bottom:1rem;font-weight:300;line-height:1.6;font-size:0.95rem;">
+                    I enjoy coding, <a href="https://en.wikipedia.org/wiki/Tennis" class="about-link" target="_blank"><strong>tennis</strong></a>, <a href="https://en.wikipedia.org/wiki/Cricket" class="about-link" target="_blank"><strong>cricket</strong></a>, and believer of <a href="https://en.wikipedia.org/wiki/Nondualism" class="about-link" target="_blank"><strong>Non-duality</strong></a>.
+                </p>
+                
+                <div class="education-section" style="margin: 2rem 0 1.5rem 0;">
+                    <h3 style="font-size:1rem;letter-spacing:2px;margin-bottom:0.7rem;opacity:0.7;">EDUCATION</h3>
+                    <div class="education-item" style="padding:0.7rem 0;">
+                         <div class="education-header" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.3rem;">
+                             <div class="education-degree" style="font-size:1rem;font-weight:700;letter-spacing:1px;">B.Sc. Mathematics</div>
+                             <div class="education-duration" style="font-size:0.85rem;opacity:0.6;letter-spacing:1px;font-weight:400;">2023 - Present</div>
+                         </div>
+                         <div class="education-institution" style="font-size:0.95rem;opacity:0.85;letter-spacing:0.5px;">
+                             <a href="https://en.wikipedia.org/wiki/National_Institute_of_Technology_Rourkela" class="about-link" target="_blank"><strong>NIT Rourkela</strong></a>
+                         </div>
+                         <div class="education-description" style="font-size:0.92rem;opacity:0.7;margin-top:0.5rem;line-height:1.5;">
+                             Currently pursuing a Bachelor of Science in Mathematics, focusing on foundational mathematics, problem solving, and applications in computer science and AI.
+                         </div>
+                     </div>
+                 </div>
+                
                 <div class="experience-section">
-                    <h3 style="font-size:1rem;letter-spacing:2px;margin-bottom:2rem;opacity:0.7;">EXPERIENCE</h3>
-                    <div class="experience-item" style="padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+                    <h3 style="font-size:1rem;letter-spacing:2px;margin-bottom:0.7rem;opacity:0.7;">EXPERIENCE</h3>
+                    <div class="experience-item" style="padding:0.7rem 0 1.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
                         <div class="experience-header" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
                             <div class="experience-role" style="font-size:1rem;font-weight:400;letter-spacing:1px;">Senior Frontend Developer</div>
                             <div class="experience-duration" style="font-size:0.75rem;opacity:0.4;letter-spacing:1px;font-weight:300;">2022 - PRESENT</div>
@@ -805,38 +927,38 @@
                         <div class="experience-company" style="font-size:0.85rem;opacity:0.6;margin-bottom:0.5rem;letter-spacing:0.5px;">Tech Innovations Inc.</div>
                         <div class="experience-description" style="font-size:0.85rem;opacity:0.5;line-height:1.6;font-weight:300;">Leading frontend development for modern web applications, focusing on performance optimization and user experience enhancement.</div>
                     </div>
-                    <div class="experience-item" style="padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+                    <!-- <div class="experience-item" style="padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
                         <div class="experience-header" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
                             <div class="experience-role" style="font-size:1rem;font-weight:400;letter-spacing:1px;">Full Stack Developer</div>
                             <div class="experience-duration" style="font-size:0.75rem;opacity:0.4;letter-spacing:1px;font-weight:300;">2020 - 2022</div>
                         </div>
                         <div class="experience-company" style="font-size:0.85rem;opacity:0.6;margin-bottom:0.5rem;letter-spacing:0.5px;">Digital Solutions Ltd.</div>
                         <div class="experience-description" style="font-size:0.85rem;opacity:0.5;line-height:1.6;font-weight:300;">Developed and maintained full-stack applications using modern technologies, collaborated with cross-functional teams.</div>
-                    </div>
-                    <div class="experience-item" style="padding:1.5rem 0;">
+                    </div> -->
+                    <!-- <div class="experience-item" style="padding:1.5rem 0;">
                         <div class="experience-header" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
                             <div class="experience-role" style="font-size:1rem;font-weight:400;letter-spacing:1px;">Web Developer</div>
                             <div class="experience-duration" style="font-size:0.75rem;opacity:0.4;letter-spacing:1px;font-weight:300;">2018 - 2020</div>
                         </div>
                         <div class="experience-company" style="font-size:0.85rem;opacity:0.6;margin-bottom:0.5rem;letter-spacing:0.5px;">Creative Agency</div>
                         <div class="experience-description" style="font-size:0.85rem;opacity:0.5;line-height:1.6;font-weight:300;">Created responsive websites and web applications for various clients, focusing on clean code and modern design principles.</div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="skills-list">
                     <h3 style="font-size:1rem;letter-spacing:2px;margin-bottom:1rem;opacity:0.7;">EXPERTISE</h3>
                     <div class="skills" style="display:flex;flex-wrap:wrap;gap:1rem;">
-                        <div class="skill">JavaScript</div>
-                        <div class="skill">React</div>
-                        <div class="skill">Vue.js</div>
-                        <div class="skill">Node.js</div>
-                        <div class="skill">TypeScript</div>
+                        <div class="skill">C++</div>
+                        <div class="skill">Python</div>
+                        <div class="skill">Java</div>
+                        <div class="skill">Julia</div>
+                        <!-- <div class="skill">TypeScript</div>
                         <div class="skill">Python</div>
                         <div class="skill">HTML/CSS</div>
                         <div class="skill">Three.js</div>
                         <div class="skill">GraphQL</div>
                         <div class="skill">MongoDB</div>
                         <div class="skill">PostgreSQL</div>
-                        <div class="skill">AWS</div>
+                        <div class="skill">AWS</div> -->
                     </div>
                 </div>
             </div>
@@ -844,14 +966,15 @@
     </div>
 
     <!-- WORK PAGE -->
-    <div id="work" class="page">
+    <div id="project" class="page">
         <div class="container">
             <div class="work-content">
-                <h2>SELECTED WORK</h2>
+                <h2>PROJECTS</h2>
                 <div class="projects-grid">
+
                     <article class="project">
                         <div class="project-header">
-                            <h3><a href="#">Interactive Data Visualization Platform</a></h3>
+                            <h3><a href="https://www.youtube.com/">Interactive Data Visualization Platform</a></h3>
                             <div class="project-arrow">→</div>
                         </div>
                         <p class="project-excerpt">A comprehensive dashboard for real-time data analysis with interactive charts and customizable visualizations built with D3.js and React.</p>
@@ -865,7 +988,7 @@
                         </div>
                     </article>
 
-                    <article class="project">
+                    <!-- <article class="project">
                         <div class="project-header">
                             <h3><a href="#">E-Commerce Mobile App</a></h3>
                             <div class="project-arrow">→</div>
@@ -879,9 +1002,9 @@
                             </div>
                             <span class="project-year">2023</span>
                         </div>
-                    </article>
+                    </article> -->
 
-                    <article class="project">
+                    <!-- <article class="project">
                         <div class="project-header">
                             <h3><a href="#">AI-Powered Content Management System</a></h3>
                             <div class="project-arrow">→</div>
@@ -895,9 +1018,9 @@
                             </div>
                             <span class="project-year">2023</span>
                         </div>
-                    </article>
+                    </article> -->
 
-                    <article class="project">
+                    <!-- <article class="project">
                         <div class="project-header">
                             <h3><a href="#">3D Portfolio Website</a></h3>
                             <div class="project-arrow">→</div>
@@ -911,9 +1034,9 @@
                             </div>
                             <span class="project-year">2022</span>
                         </div>
-                    </article>
+                    </article> -->
 
-                    <article class="project">
+                    <!-- <article class="project">
                         <div class="project-header">
                             <h3><a href="#">Blockchain-Based Voting System</a></h3>
                             <div class="project-arrow">→</div>
@@ -927,7 +1050,7 @@
                             </div>
                             <span class="project-year">2022</span>
                         </div>
-                    </article>
+                    </article> -->
                 </div>
             </div>
         </div>
@@ -937,8 +1060,9 @@
     <div id="research" class="page">
         <div class="container">
             <div class="research-content">
-                <h2>RESEARCH PAPERS</h2>
+                <h2>RESEARCH PAPERS I've Implemented</h2>
                 <div class="research-papers">
+
                     <article class="research-paper">
                         <div class="paper-header">
                             <h3><a href="#">Machine Learning Approaches to Web Performance Optimization</a></h3>
@@ -951,9 +1075,9 @@
                         </div>
                     </article>
 
-                    <article class="research-paper">
+                    <!-- <article class="research-paper">
                         <div class="paper-header">
-                            <h3><a href="#">Blockchain Integration in Modern Web Applications</a></h3>
+                            <h3><a href="https://www.youtube.com/">Blockchain Integration in Modern Web Applications</a></h3>
                             <div class="paper-arrow">→</div>
                         </div>
                         <p class="paper-excerpt">Comprehensive analysis of implementing blockchain technology in web applications, examining security implications, performance considerations, and user experience challenges.</p>
@@ -961,9 +1085,9 @@
                             <span class="paper-date">PUBLISHED 2023</span>
                             <span class="paper-status">CONFERENCE PAPER</span>
                         </div>
-                    </article>
+                    </article> -->
 
-                    <article class="research-paper">
+                    <!-- <article class="research-paper">
                         <div class="paper-header">
                             <h3><a href="#">Real-time Data Visualization: Performance and Scalability</a></h3>
                             <div class="paper-arrow">→</div>
@@ -973,9 +1097,9 @@
                             <span class="paper-date">PUBLISHED 2023</span>
                             <span class="paper-status">JOURNAL ARTICLE</span>
                         </div>
-                    </article>
+                    </article> -->
 
-                    <article class="research-paper">
+                    <!-- <article class="research-paper">
                         <div class="paper-header">
                             <h3><a href="#">Accessibility in Modern JavaScript Frameworks</a></h3>
                             <div class="paper-arrow">→</div>
@@ -985,9 +1109,9 @@
                             <span class="paper-date">UNDER REVIEW</span>
                             <span class="paper-status">SUBMITTED</span>
                         </div>
-                    </article>
+                    </article> -->
 
-                    <article class="research-paper">
+                    <!-- <article class="research-paper">
                         <div class="paper-header">
                             <h3><a href="#">The Future of WebAssembly in Frontend Development</a></h3>
                             <div class="paper-arrow">→</div>
@@ -997,7 +1121,53 @@
                             <span class="paper-date">IN PROGRESS</span>
                             <span class="paper-status">DRAFT</span>
                         </div>
+                    </article> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOG PAGE -->
+    <div id="blog" class="page">
+        <div class="container">
+            <div class="research-content">
+                <h2>BLOG POSTS</h2>
+                <div class="research-papers">
+                    <article class="research-paper">
+                        <div class="paper-header">
+                            <h3><a href="https://medium.com/@smruti09">Getting Started with Web Development in 2024</a></h3>
+                            <div class="paper-arrow">→</div>
+                        </div>
+                        <p class="paper-excerpt">A comprehensive guide for beginners looking to start their journey in web development, covering modern tools, frameworks, and best practices.</p>
+                        <div class="paper-meta">
+                            <span class="paper-date">MAY 2024</span>
+                            <span class="paper-status">TECHNICAL</span>
+                        </div>
                     </article>
+
+                    <!-- <article class="research-paper">
+                        <div class="paper-header">
+                            <h3><a href="https://medium.com/@smruti09">The Future of AI in Web Development</a></h3>
+                            <div class="paper-arrow">→</div>
+                        </div>
+                        <p class="paper-excerpt">Exploring how artificial intelligence is transforming web development, from automated code generation to intelligent user interfaces.</p>
+                        <div class="paper-meta">
+                            <span class="paper-date">APRIL 2024</span>
+                            <span class="paper-status">AI/ML</span>
+                        </div>
+                    </article> -->
+
+                    <!-- <article class="research-paper">
+                        <div class="paper-header">
+                            <h3><a href="https://medium.com/@smruti09">Building Responsive Web Applications</a></h3>
+                            <div class="paper-arrow">→</div>
+                        </div>
+                        <p class="paper-excerpt">Best practices and techniques for creating responsive web applications that work seamlessly across all devices and screen sizes.</p>
+                        <div class="paper-meta">
+                            <span class="paper-date">MARCH 2024</span>
+                            <span class="paper-status">TUTORIAL</span>
+                        </div>
+                    </article> -->
                 </div>
             </div>
         </div>
@@ -1012,21 +1182,38 @@
                     <p>Let's collaborate on your next project or discuss opportunities to work together.</p>
                     
                     <div class="social-grid">
-                        <a href="#" class="social-item" title="GitHub">
+                        <a href="https://github.com/srmty09" class="social-item" title="GitHub">
                             <span>⟨/⟩</span>
                         </a>
-                        <a href="#" class="social-item" title="LinkedIn">
+                        <a href="https://www.linkedin.com/in/smruti-ranjan-mohanty-2b3122246/" class="social-item" title="LinkedIn">
                             <span>in</span>
                         </a>
-                        <a href="#" class="social-item" title="Twitter">
+                        <a href="https://x.com/musafirrr__" class="social-item" title="Twitter">
                             <span>@</span>
                         </a>
-                        <a href="mailto:hello@yourname.com" class="email-item">
-                            hello@yourname.com
+                        <a href="mailto:smruti45ranjan@gmail.com" class="email-item">
+                            smruti45ranjan@gmail.com
                         </a>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- BLACKHOLE EASTER EGG PAGE -->
+    <div id="blackhole" class="page">
+        <div class="container" style="text-align:center;padding-top:4rem;position:relative;">
+            <h2 style="font-size:2rem;font-weight:900;margin-bottom:1.5rem;letter-spacing:2px;color:#fff;">EULER'S FORMULA</h2>
+            <p style="color:#fff;opacity:0.85;font-size:1.1rem;max-width:600px;margin:0 auto 2rem auto;line-height:1.7;">
+                You found the easter egg!<br><br>
+                <strong>Euler's formula</strong> is often called the most beautiful equation in mathematics:<br>
+                <span style="display:inline-block;margin:1rem 0;font-size:1.3rem;font-weight:700;letter-spacing:1px;">e<sup>iπ</sup> + 1 = 0</span><br><br>
+                It links five of the most important constants in mathematics: <strong>e</strong> (the base of natural logarithms), <strong>i</strong> (the imaginary unit), <strong>π</strong> (pi), <strong>1</strong>, and <strong>0</strong>—all in a single, elegant equation. This formula is a bridge between algebra, geometry, and complex analysis, and is celebrated for its simplicity and depth.<br><br>
+                As Richard Feynman called it, "the most remarkable formula in mathematics."
+            </p>
+            <img src="eu.jpg" alt="Leonhard Euler" style="max-width:120px;width:100%;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,0.5);margin-bottom:1.2rem;">
+            <div style="color:#fff;opacity:0.7;font-size:0.95rem;margin-bottom:2rem;">Leonhard Euler (1707–1783)</div>
+            <a href="#home" style="color:#fff;text-decoration:underline;opacity:0.8;font-size:1rem;">Back to Home</a>
         </div>
     </div>
 
@@ -1045,23 +1232,32 @@
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 const targetPage = item.getAttribute('data-page');
-                
                 // Remove active class from all nav items and pages
                 navItems.forEach(nav => nav.classList.remove('active'));
                 pages.forEach(page => page.classList.remove('active'));
-                
                 // Add active class to clicked nav item and target page
                 item.classList.add('active');
                 document.getElementById(targetPage).classList.add('active');
-                
                 // Trigger fade-in animation for content
                 const activePageContent = document.getElementById(targetPage);
-                const animatedElements = activePageContent.querySelectorAll('.project, .research-paper, .experience-item');
+                let animatedElements = activePageContent.querySelectorAll('.project, .research-paper, .experience-item');
+                // If about page, also animate the main about content
+                if (targetPage === 'about') {
+                    const aboutMain = activePageContent.querySelector('.about-main');
+                    if (aboutMain) {
+                        animatedElements = Array.from(animatedElements);
+                        animatedElements.unshift(aboutMain);
+                    }
+                }
                 animatedElements.forEach((el, index) => {
-                    el.style.animation = 'none';
-                    el.offsetHeight; // Trigger reflow
-                    el.style.animation = `fadeInUp 0.8s ease ${index * 0.1}s forwards`;
+                    el.classList.remove('fade-in');
+                    // Force reflow
+                    void el.offsetWidth;
+                    el.classList.add('fade-in');
+                    el.style.animationDelay = `${index * 0.1}s`;
                 });
+                // Update arrow labels
+                updateArrowLabels();
             });
         });
 
@@ -1101,9 +1297,12 @@
             
             projectLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // You can add actual URLs or modal functionality here
-                    console.log('Opening project:', this.textContent);
+                    // Only prevent default if the link is empty or '#'
+                    if (!this.getAttribute('href') || this.getAttribute('href') === '#') {
+                        e.preventDefault();
+                        console.log('Opening project:', this.textContent);
+                    }
+                    // Otherwise, let the link work normally
                 });
             });
         });
@@ -1122,6 +1321,108 @@
                 });
             });
         });
+
+        // Easter egg: show blackhole page when home profile pic is clicked
+        document.addEventListener('DOMContentLoaded', function() {
+            const blackholeLink = document.getElementById('blackhole-link');
+            if (blackholeLink) {
+                blackholeLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    pages.forEach(page => page.classList.remove('active'));
+                    document.getElementById('blackhole').classList.add('active');
+                });
+            }
+            // Back to Home from blackhole page
+            const backToHome = document.querySelector('#blackhole a[href="#home"]');
+            if (backToHome) {
+                backToHome.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    pages.forEach(page => page.classList.remove('active'));
+                    document.getElementById('home').classList.add('active');
+                });
+            }
+        });
+
+        // Page order for arrow navigation
+        const pageOrder = ["home", "about", "project", "research", "blog", "contact"];
+        const leftArrow = document.getElementById('arrow-left');
+        const rightArrow = document.getElementById('arrow-right');
+
+        function getCurrentPageIndex() {
+            for (let i = 0; i < pageOrder.length; i++) {
+                if (document.getElementById(pageOrder[i]).classList.contains('active')) {
+                    return i;
+                }
+            }
+            return 0;
+        }
+
+        function showPageByIndex(idx) {
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageOrder[idx]).classList.add('active');
+            // Sync nav dock
+            navItems.forEach(nav => nav.classList.remove('active'));
+            const pageName = pageOrder[idx];
+            const navToActivate = Array.from(navItems).find(nav => nav.getAttribute('data-page') === pageName);
+            if (navToActivate) navToActivate.classList.add('active');
+            // Update arrow labels
+            updateArrowLabels();
+        }
+
+        if (leftArrow && rightArrow) {
+            leftArrow.addEventListener('click', function() {
+                let idx = getCurrentPageIndex();
+                idx = (idx - 1 + pageOrder.length) % pageOrder.length;
+                showPageByIndex(idx);
+            });
+            rightArrow.addEventListener('click', function() {
+                let idx = getCurrentPageIndex();
+                idx = (idx + 1) % pageOrder.length;
+                showPageByIndex(idx);
+            });
+        }
+
+        // Hide arrows on blackhole (easter egg) page
+        function updateArrowVisibility() {
+            const isBlackhole = document.getElementById('blackhole').classList.contains('active');
+            if (leftArrow && rightArrow) {
+                leftArrow.style.display = isBlackhole ? 'none' : 'flex';
+                rightArrow.style.display = isBlackhole ? 'none' : 'flex';
+            }
+        }
+        // Update on navigation
+        document.addEventListener('click', updateArrowVisibility, true);
+        // Update on page load
+        document.addEventListener('DOMContentLoaded', updateArrowVisibility);
+
+        // Page display names for arrows
+        const pageDisplayNames = {
+            home: 'Home',
+            about: 'About',
+            project: 'Work',
+            research: 'Research',
+            blog: 'Blog',
+            contact: 'Contact'
+        };
+
+        const leftLabel = document.getElementById('arrow-left-label');
+        const rightLabel = document.getElementById('arrow-right-label');
+
+        function updateArrowLabels() {
+            const idx = getCurrentPageIndex();
+            // For left arrow: show the page you will go to if you click left (previous in the cycle)
+            // For right arrow: show the page you will go to if you click right (next in the cycle)
+            let prevIdx = idx - 1;
+            let nextIdx = idx + 1;
+            if (prevIdx < 0) prevIdx = pageOrder.length - 1;
+            if (nextIdx >= pageOrder.length) nextIdx = 0;
+            if (leftLabel) leftLabel.textContent = pageDisplayNames[pageOrder[prevIdx]];
+            if (rightLabel) rightLabel.textContent = pageDisplayNames[pageOrder[nextIdx]];
+        }
+
+        // Update labels on navigation and page load
+        document.addEventListener('click', updateArrowLabels, true);
+        document.addEventListener('DOMContentLoaded', updateArrowLabels);
     </script>
 </body>
 </html> 
