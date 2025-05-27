@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>srmty</title>
+    <link rel="icon" type="image/png" href="Image.png">
     <style>
         * {
             margin: 0;
@@ -882,12 +883,32 @@
             box-shadow: 0 0 16px 4px #fff, 0 4px 16px rgba(0,0,0,0.25);
             background: rgba(30,30,30,0.95);
         }
+
+        /* Welcome Page Exit Animation */
+        @keyframes welcomeExit {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-60px);
+            }
+        }
+        .welcome-exit {
+            animation: welcomeExit 0.7s cubic-bezier(0.7,0,0.3,1) forwards;
+        }
     </style>
 </head>
 <body>
     <div class="loading">
         <div class="loader"></div>
         <div style="margin-top: 2rem; color: #f8f8ff; font-size: 1.2rem; letter-spacing: 2px;">Loading...</div>
+    </div>
+    <div class="welcome-page" style="display:none;position:fixed;z-index:9998;top:0;left:0;width:100vw;height:100vh;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+        <img src="Image.png" alt="Welcome" style="max-width:180px;width:60vw;height:auto;border-radius:24px;box-shadow:0 4px 32px rgba(0,0,0,0.25);margin-bottom:2rem;">
+        <div style="color:#fff;font-size:2rem;font-weight:700;letter-spacing:2px;margin-bottom:1.5rem;text-align:center;">Welcome to Smruti's Portfolio</div>
+        <button id="continue-btn" style="padding:0.8rem 2.2rem;font-size:1.1rem;border-radius:18px;border:none;background:#8cf;color:#000;font-weight:700;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.18);transition:background 0.2s;">Continue</button>
     </div>
 
     <nav>
@@ -933,10 +954,10 @@
                     <a href="#blackhole" id="blackhole-link" title="Click for a surprise!">
                         <img src="image.png" alt="Profile Image" style="display:block;margin:0 auto 2rem auto;max-width:160px;width:100%;height:auto;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.15);">
                     </a>
-                    <h1>SMRUTI</h1>
+                    <h1>Hi,Smruti here</h1>
                     <p class="subtitle">A LEARNER</p>
                     <p>I study math. I code. I sleep. I repeat.</p>
-                    <div class="home-quote">“I truly believe that we are the creators of our own destiny and our own paths and what we really want.”</div>
+                    <div class="home-quote">"I truly believe that we are the creators of our own destiny and our own paths and what we really want."</div>
                     <div class="home-quote-quoter">— Novak Djokovic</div>
                 </div>
             </div>
@@ -1035,7 +1056,7 @@
 
                     <article class="project">
                         <div class="project-header">
-                            <h3><a href="https://www.youtube.com/">Interactive Data Visualization Platform</a></h3>
+                            <h3><a href="#proj1-detail" class="project-detail-link" data-project="proj1-detail">Interactive Data Visualization Platform</a></h3>
                             <div class="project-arrow">→</div>
                         </div>
                         <p class="project-excerpt">A comprehensive dashboard for real-time data analysis with interactive charts and customizable visualizations built with D3.js and React.</p>
@@ -1126,7 +1147,7 @@
 
                     <article class="research-paper">
                         <div class="paper-header">
-                            <h3><a href="#">Machine Learning Approaches to Web Performance Optimization</a></h3>
+                            <h3><a href="#paper1-detail" class="paper-detail-link" data-paper="paper1-detail">Machine Learning Approaches to Web Performance Optimization</a></h3>
                             <div class="paper-arrow">→</div>
                         </div>
                         <p class="paper-excerpt">An investigation into applying machine learning algorithms to automatically optimize web application performance, focusing on predictive resource loading and adaptive user interface rendering.</p>
@@ -1136,9 +1157,9 @@
                         </div>
                     </article>
 
-                    <!-- <article class="research-paper">
+                    <article class="research-paper">
                         <div class="paper-header">
-                            <h3><a href="https://www.youtube.com/">Blockchain Integration in Modern Web Applications</a></h3>
+                            <h3><a href="#paper2-detail" class="paper-detail-link" data-paper="paper2-detail">Blockchain Integration in Modern Web Applications</a></h3>
                             <div class="paper-arrow">→</div>
                         </div>
                         <p class="paper-excerpt">Comprehensive analysis of implementing blockchain technology in web applications, examining security implications, performance considerations, and user experience challenges.</p>
@@ -1146,11 +1167,11 @@
                             <span class="paper-date">PUBLISHED 2023</span>
                             <span class="paper-status">CONFERENCE PAPER</span>
                         </div>
-                    </article> -->
+                    </article>
 
-                    <!-- <article class="research-paper">
+                    <article class="research-paper">
                         <div class="paper-header">
-                            <h3><a href="#">Real-time Data Visualization: Performance and Scalability</a></h3>
+                            <h3><a href="#paper3-detail" class="paper-detail-link" data-paper="paper3-detail">Real-time Data Visualization: Performance and Scalability</a></h3>
                             <div class="paper-arrow">→</div>
                         </div>
                         <p class="paper-excerpt">Study on optimizing real-time data visualization techniques for large-scale applications, comparing WebGL, Canvas, and SVG rendering approaches.</p>
@@ -1158,11 +1179,11 @@
                             <span class="paper-date">PUBLISHED 2023</span>
                             <span class="paper-status">JOURNAL ARTICLE</span>
                         </div>
-                    </article> -->
+                    </article>
 
-                    <!-- <article class="research-paper">
+                    <article class="research-paper">
                         <div class="paper-header">
-                            <h3><a href="#">Accessibility in Modern JavaScript Frameworks</a></h3>
+                            <h3><a href="#paper4-detail" class="paper-detail-link" data-paper="paper4-detail">Accessibility in Modern JavaScript Frameworks</a></h3>
                             <div class="paper-arrow">→</div>
                         </div>
                         <p class="paper-excerpt">Evaluation of accessibility features and limitations across popular JavaScript frameworks, with recommendations for inclusive design practices.</p>
@@ -1170,11 +1191,11 @@
                             <span class="paper-date">UNDER REVIEW</span>
                             <span class="paper-status">SUBMITTED</span>
                         </div>
-                    </article> -->
+                    </article>
 
-                    <!-- <article class="research-paper">
+                    <article class="research-paper">
                         <div class="paper-header">
-                            <h3><a href="#">The Future of WebAssembly in Frontend Development</a></h3>
+                            <h3><a href="#paper5-detail" class="paper-detail-link" data-paper="paper5-detail">The Future of WebAssembly in Frontend Development</a></h3>
                             <div class="paper-arrow">→</div>
                         </div>
                         <p class="paper-excerpt">Exploring the potential applications and performance benefits of WebAssembly in modern frontend development, with practical implementation examples.</p>
@@ -1182,7 +1203,7 @@
                             <span class="paper-date">IN PROGRESS</span>
                             <span class="paper-status">DRAFT</span>
                         </div>
-                    </article> -->
+                    </article>
                 </div>
             </div>
         </div>
@@ -1255,6 +1276,9 @@
                         <a href="mailto:smruti45ranjan@gmail.com" class="email-item">
                             smruti45ranjan@gmail.com
                         </a>
+                        <a href="recommend.html" class="email-item" style="margin-top:0.5rem;" target="_blank">
+                            Recommendations Website
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1278,12 +1302,121 @@
         </div>
     </div>
 
+    <!-- RESEARCH PAPER 1 DETAIL PAGE -->
+    <div id="paper1-detail" class="page">
+        <div class="container" style="max-width:600px;margin:0 auto;padding:3rem 0;">
+            <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:2rem;letter-spacing:2px;color:#fff;">Machine Learning Approaches to Web Performance Optimization</h2>
+            <p style="color:#fff;opacity:0.85;font-size:1.05rem;margin-bottom:2rem;">This project explores how machine learning can be used to automatically optimize web application performance, focusing on predictive resource loading and adaptive UI rendering.</p>
+            <div style="margin-bottom:2rem;">
+                <strong style="color:#fff;">Code:</strong> <a href="https://github.com/yourusername/ml-web-perf" target="_blank" style="color:#8cf;text-decoration:underline;">View on GitHub</a>
+            </div>
+            <div style="margin-bottom:2.5rem;">
+                <strong style="color:#fff;">Original Paper:</strong> <a href="https://arxiv.org/abs/1234.5678" target="_blank" style="color:#8cf;text-decoration:underline;">Read on arXiv</a>
+            </div>
+            <a href="#research" class="back-to-research" style="color:#fff;text-decoration:underline;opacity:0.8;font-size:1rem;">← Back to Research</a>
+        </div>
+    </div>
+
+    <!-- RESEARCH PAPER 2 DETAIL PAGE -->
+    <div id="paper2-detail" class="page">
+        <div class="container" style="max-width:600px;margin:0 auto;padding:3rem 0;">
+            <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:2rem;letter-spacing:2px;color:#fff;">Blockchain Integration in Modern Web Applications</h2>
+            <p style="color:#fff;opacity:0.85;font-size:1.05rem;margin-bottom:2rem;">Comprehensive analysis of implementing blockchain technology in web applications, examining security implications, performance considerations, and user experience challenges.</p>
+            <div style="margin-bottom:2rem;">
+                <strong style="color:#fff;">Code:</strong> <a href="https://github.com/yourusername/blockchain-webapp" target="_blank" style="color:#8cf;text-decoration:underline;">View on GitHub</a>
+            </div>
+            <div style="margin-bottom:2.5rem;">
+                <strong style="color:#fff;">Original Paper:</strong> <a href="https://arxiv.org/abs/2345.6789" target="_blank" style="color:#8cf;text-decoration:underline;">Read on arXiv</a>
+            </div>
+            <a href="#research" class="back-to-research" style="color:#fff;text-decoration:underline;opacity:0.8;font-size:1rem;">← Back to Research</a>
+        </div>
+    </div>
+
+    <!-- RESEARCH PAPER 3 DETAIL PAGE -->
+    <div id="paper3-detail" class="page">
+        <div class="container" style="max-width:600px;margin:0 auto;padding:3rem 0;">
+            <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:2rem;letter-spacing:2px;color:#fff;">Real-time Data Visualization: Performance and Scalability</h2>
+            <p style="color:#fff;opacity:0.85;font-size:1.05rem;margin-bottom:2rem;">Study on optimizing real-time data visualization techniques for large-scale applications, comparing WebGL, Canvas, and SVG rendering approaches.</p>
+            <div style="margin-bottom:2rem;">
+                <strong style="color:#fff;">Code:</strong> <a href="https://github.com/yourusername/realtime-viz" target="_blank" style="color:#8cf;text-decoration:underline;">View on GitHub</a>
+            </div>
+            <div style="margin-bottom:2.5rem;">
+                <strong style="color:#fff;">Original Paper:</strong> <a href="https://arxiv.org/abs/3456.7890" target="_blank" style="color:#8cf;text-decoration:underline;">Read on arXiv</a>
+            </div>
+            <a href="#research" class="back-to-research" style="color:#fff;text-decoration:underline;opacity:0.8;font-size:1rem;">← Back to Research</a>
+        </div>
+    </div>
+
+    <!-- RESEARCH PAPER 4 DETAIL PAGE -->
+    <div id="paper4-detail" class="page">
+        <div class="container" style="max-width:600px;margin:0 auto;padding:3rem 0;">
+            <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:2rem;letter-spacing:2px;color:#fff;">Accessibility in Modern JavaScript Frameworks</h2>
+            <p style="color:#fff;opacity:0.85;font-size:1.05rem;margin-bottom:2rem;">Evaluation of accessibility features and limitations across popular JavaScript frameworks, with recommendations for inclusive design practices.</p>
+            <div style="margin-bottom:2rem;">
+                <strong style="color:#fff;">Code:</strong> <a href="https://github.com/yourusername/js-accessibility" target="_blank" style="color:#8cf;text-decoration:underline;">View on GitHub</a>
+            </div>
+            <div style="margin-bottom:2.5rem;">
+                <strong style="color:#fff;">Original Paper:</strong> <a href="https://arxiv.org/abs/4567.8901" target="_blank" style="color:#8cf;text-decoration:underline;">Read on arXiv</a>
+            </div>
+            <a href="#research" class="back-to-research" style="color:#fff;text-decoration:underline;opacity:0.8;font-size:1rem;">← Back to Research</a>
+        </div>
+    </div>
+
+    <!-- RESEARCH PAPER 5 DETAIL PAGE -->
+    <div id="paper5-detail" class="page">
+        <div class="container" style="max-width:600px;margin:0 auto;padding:3rem 0;">
+            <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:2rem;letter-spacing:2px;color:#fff;">The Future of WebAssembly in Frontend Development</h2>
+            <p style="color:#fff;opacity:0.85;font-size:1.05rem;margin-bottom:2rem;">Exploring the potential applications and performance benefits of WebAssembly in modern frontend development, with practical implementation examples.</p>
+            <div style="margin-bottom:2rem;">
+                <strong style="color:#fff;">Code:</strong> <a href="https://github.com/yourusername/webassembly-frontend" target="_blank" style="color:#8cf;text-decoration:underline;">View on GitHub</a>
+            </div>
+            <div style="margin-bottom:2.5rem;">
+                <strong style="color:#fff;">Original Paper:</strong> <a href="https://arxiv.org/abs/5678.9012" target="_blank" style="color:#8cf;text-decoration:underline;">Read on arXiv</a>
+            </div>
+            <a href="#research" class="back-to-research" style="color:#fff;text-decoration:underline;opacity:0.8;font-size:1rem;">← Back to Research</a>
+        </div>
+    </div>
+
+    <!-- PROJECT 1 DETAIL PAGE -->
+    <div id="proj1-detail" class="page">
+        <div class="container" style="max-width:600px;margin:0 auto;padding:3rem 0;">
+            <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:2rem;letter-spacing:2px;color:#fff;">Interactive Data Visualization Platform</h2>
+            <p style="color:#fff;opacity:0.85;font-size:1.05rem;margin-bottom:2rem;">A comprehensive dashboard for real-time data analysis with interactive charts and customizable visualizations built with D3.js and React.</p>
+            <div style="margin-bottom:2rem;">
+                <strong style="color:#fff;">Code:</strong> <a href="https://github.com/yourusername/data-viz-platform" target="_blank" style="color:#8cf;text-decoration:underline;">View on GitHub</a>
+            </div>
+            <div style="margin-bottom:2.5rem;">
+                <strong style="color:#fff;">Demo:</strong> <a href="https://your-demo-link.com" target="_blank" style="color:#8cf;text-decoration:underline;">Live Demo</a>
+            </div>
+            <a href="#project" class="back-to-projects" style="color:#fff;text-decoration:underline;opacity:0.8;font-size:1rem;">← Back to Projects</a>
+        </div>
+    </div>
+
     <script>
-        // Remove loading screen after page loads
+        // Remove loading screen after page loads, then show welcome page
         window.addEventListener('load', function() {
             setTimeout(() => {
                 document.querySelector('.loading').classList.add('hidden');
+                document.querySelector('.welcome-page').style.display = 'flex';
             }, 1000);
+        });
+        // Hide welcome page on continue
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('continue-btn');
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    const welcomePage = document.querySelector('.welcome-page');
+                    // Add exit animation
+                    welcomePage.classList.add('welcome-exit');
+                    // Set a flag to skip home fade-in
+                    window.justContinuedFromWelcome = true;
+                    setTimeout(() => {
+                        welcomePage.style.display = 'none';
+                        // Optionally, ensure home is visible (in case it was hidden)
+                        document.getElementById('home').classList.add('active');
+                    }, 700);
+                });
+            }
         });
 
         // Navigation functionality
@@ -1310,13 +1443,20 @@
                         animatedElements.unshift(aboutMain);
                     }
                 }
-                animatedElements.forEach((el, index) => {
-                    el.classList.remove('fade-in');
-                    // Force reflow
-                    void el.offsetWidth;
-                    el.classList.add('fade-in');
-                    el.style.animationDelay = `${index * 0.1}s`;
-                });
+                // Only skip fade-in for home page if justContinuedFromWelcome is set
+                if (!(targetPage === 'home' && window.justContinuedFromWelcome)) {
+                    animatedElements.forEach((el, index) => {
+                        el.classList.remove('fade-in');
+                        // Force reflow
+                        void el.offsetWidth;
+                        el.classList.add('fade-in');
+                        el.style.animationDelay = `${index * 0.1}s`;
+                    });
+                }
+                // Reset the flag after first home visit
+                if (targetPage === 'home') {
+                    window.justContinuedFromWelcome = false;
+                }
                 // Update arrow labels
                 updateArrowLabels();
             });
@@ -1410,8 +1550,18 @@
         const rightArrow = document.getElementById('arrow-right');
 
         function getCurrentPageIndex() {
+            // Only consider main pages in pageOrder
             for (let i = 0; i < pageOrder.length; i++) {
-                if (document.getElementById(pageOrder[i]).classList.contains('active')) {
+                const page = document.getElementById(pageOrder[i]);
+                if (page && page.classList.contains('active')) {
+                    return i;
+                }
+            }
+            // If no main page is active (e.g., a detail page is active),
+            // return the last main page that was active (by checking nav dock)
+            for (let i = 0; i < pageOrder.length; i++) {
+                const nav = Array.from(navItems).find(nav => nav.getAttribute('data-page') === pageOrder[i]);
+                if (nav && nav.classList.contains('active')) {
                     return i;
                 }
             }
@@ -1484,6 +1634,53 @@
         // Update labels on navigation and page load
         document.addEventListener('click', updateArrowLabels, true);
         document.addEventListener('DOMContentLoaded', updateArrowLabels);
+
+        // Research paper detail navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const paperLinks = document.querySelectorAll('.paper-detail-link');
+            paperLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    pages.forEach(page => page.classList.remove('active'));
+                    const target = this.getAttribute('data-paper');
+                    document.getElementById(target).classList.add('active');
+                });
+            });
+            // Back to research from detail (attach to all with class)
+            const backBtns = document.querySelectorAll('.back-to-research');
+            backBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    pages.forEach(page => page.classList.remove('active'));
+                    document.getElementById('research').classList.add('active');
+                    updateArrowLabels();
+                });
+            });
+        });
+
+        // Project detail navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectLinks = document.querySelectorAll('.project-detail-link');
+            projectLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    pages.forEach(page => page.classList.remove('active'));
+                    const target = this.getAttribute('data-project');
+                    document.getElementById(target).classList.add('active');
+                    updateArrowLabels();
+                });
+            });
+            // Back to projects from detail
+            const backBtns = document.querySelectorAll('.back-to-projects');
+            backBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    pages.forEach(page => page.classList.remove('active'));
+                    document.getElementById('project').classList.add('active');
+                    updateArrowLabels();
+                });
+            });
+        });
     </script>
 </body>
 </html> 
