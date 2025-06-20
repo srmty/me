@@ -1140,6 +1140,14 @@
                         <span> Machine Learning Projects </span>
                         <span class="research-topic-arrow">→</span>
                     </div>
+                    <div class="research-topic-card" id="numerical-libs-link">
+                        <span> Numerical Libraries </span>
+                        <span class="research-topic-arrow">→</span>
+                    </div>
+                    <div class="research-topic-card" id="cpp-libs-link">
+                        <span> C++ Libraries </span>
+                        <span class="research-topic-arrow">→</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1160,6 +1168,52 @@
                         </div>
                         <div class="paper-links">
                             <a class="paper-link" href="https://github.com/srmty09/smol-pytorch-cpp" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                    <a href="#project" class="back-to-projects back-link">← Back to Projects</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NUMERICAL LIBS SUBPAGE -->
+    <div id="numerical-libs" class="page" style="display:none;">
+        <div class="container">
+            <div class="research-content">
+                <h2 style="margin-bottom:2rem;">Numerical Libraries</h2>
+                <div class="research-papers">
+                    <div class="paper-card">
+                        <div class="paper-title">NumLib</div>
+                        <div class="paper-desc">A C++ library for numerical methods, including root finding, interpolation, numerical integration, and linear algebra solvers.</div>
+                        <div class="project-tech" style="margin-top: 1rem; margin-bottom: 1rem;">
+                            <span class="tech">C++</span>
+                            <span class="tech">CMAKE</span>
+                        </div>
+                        <div class="paper-links">
+                            <a class="paper-link" href="https://github.com/srmty09/numlib" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                    <a href="#project" class="back-to-projects back-link">← Back to Projects</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- C++ LIBS SUBPAGE -->
+    <div id="cpp-libs" class="page" style="display:none;">
+        <div class="container">
+            <div class="research-content">
+                <h2 style="margin-bottom:2rem;">C++ Libraries</h2>
+                <div class="research-papers">
+                    <div class="paper-card">
+                        <div class="paper-title">SyPy</div>
+                        <div class="paper-desc">A minimal NumPy-like C++ library with templated matrix and array operations, including linear algebra and array generation.</div>
+                         <div class="project-tech" style="margin-top: 1rem; margin-bottom: 1rem;">
+                            <span class="tech">C++</span>
+                            <span class="tech">MAKEFILE</span>
+                        </div>
+                        <div class="paper-links">
+                            <a class="paper-link" href="https://github.com/srmty09/sypy" target="_blank">View on GitHub</a>
                         </div>
                     </div>
                     <a href="#project" class="back-to-projects back-link">← Back to Projects</a>
@@ -1646,8 +1700,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             // New project topic navigation
             const mlProjectsLink = document.getElementById('ml-projects-link');
+            const numericalLibsLink = document.getElementById('numerical-libs-link');
+            const cppLibsLink = document.getElementById('cpp-libs-link');
+
             const projectsPage = document.getElementById('project');
+            
             const mlProjectsPage = document.getElementById('ml-projects');
+            const numericalLibsPage = document.getElementById('numerical-libs');
+            const cppLibsPage = document.getElementById('cpp-libs');
 
             if (mlProjectsLink) {
                 mlProjectsLink.addEventListener('click', function() {
@@ -1656,6 +1716,21 @@
                     mlProjectsPage.classList.add('active');
                 });
             }
+            if (numericalLibsLink) {
+                numericalLibsLink.addEventListener('click', function() {
+                    projectsPage.classList.remove('active');
+                    numericalLibsPage.style.display = 'block';
+                    numericalLibsPage.classList.add('active');
+                });
+            }
+            if (cppLibsLink) {
+                cppLibsLink.addEventListener('click', function() {
+                    projectsPage.classList.remove('active');
+                    cppLibsPage.style.display = 'block';
+                    cppLibsPage.classList.add('active');
+                });
+            }
+
 
             // Back to projects from detail
             const backBtns = document.querySelectorAll('.back-to-projects');
@@ -1665,6 +1740,14 @@
                     if(mlProjectsPage.classList.contains('active')) {
                         mlProjectsPage.classList.remove('active');
                         mlProjectsPage.style.display = 'none';
+                    }
+                    if(numericalLibsPage.classList.contains('active')) {
+                        numericalLibsPage.classList.remove('active');
+                        numericalLibsPage.style.display = 'none';
+                    }
+                     if(cppLibsPage.classList.contains('active')) {
+                        cppLibsPage.classList.remove('active');
+                        cppLibsPage.style.display = 'none';
                     }
                     projectsPage.classList.add('active');
                     updateArrowLabels();
@@ -1696,4 +1779,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
