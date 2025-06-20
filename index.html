@@ -1460,21 +1460,37 @@
         // Navigation functionality
         const navItems = document.querySelectorAll('.nav-item');
         const pages = document.querySelectorAll('.page');
+        const subpageIds = ['cnn-papers', 'ml-projects', 'numerical-libs', 'cpp-libs'];
 
         navItems.forEach(item => {
             item.addEventListener('click', () => {
-                const targetPage = item.getAttribute('data-page');
-                // Remove active class from all nav items and pages
-                navItems.forEach(nav => nav.classList.remove('active'));
+                const targetPageId = item.getAttribute('data-page');
+
+                // Deactivate all main pages and hide all sub-pages
                 pages.forEach(page => page.classList.remove('active'));
-                // Add active class to clicked nav item and target page
+                subpageIds.forEach(id => {
+                    const subpage = document.getElementById(id);
+                    if (subpage) {
+                        subpage.classList.remove('active');
+                        subpage.style.display = 'none';
+                    }
+                });
+                
+                // Activate the target page
+                const targetPage = document.getElementById(targetPageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                }
+
+                // Update active state on the nav dock
+                navItems.forEach(nav => nav.classList.remove('active'));
                 item.classList.add('active');
-                document.getElementById(targetPage).classList.add('active');
+
                 // Trigger fade-in animation for content
-                const activePageContent = document.getElementById(targetPage);
+                const activePageContent = document.getElementById(targetPageId);
                 let animatedElements = activePageContent.querySelectorAll('.project, .research-paper, .experience-item');
                 // If about page, also animate the main about content
-                if (targetPage === 'about') {
+                if (targetPageId === 'about') {
                     const aboutMain = activePageContent.querySelector('.about-main');
                     if (aboutMain) {
                         animatedElements = Array.from(animatedElements);
@@ -1482,7 +1498,7 @@
                     }
                 }
                 // Only skip fade-in for home page if justContinuedFromWelcome is set
-                if (!(targetPage === 'home' && window.justContinuedFromWelcome)) {
+                if (!(targetPageId === 'home' && window.justContinuedFromWelcome)) {
                     animatedElements.forEach((el, index) => {
                         el.classList.remove('fade-in');
                         // Force reflow
@@ -1492,7 +1508,7 @@
                     });
                 }
                 // Reset the flag after first home visit
-                if (targetPage === 'home') {
+                if (targetPageId === 'home') {
                     window.justContinuedFromWelcome = false;
                 }
                 // Update arrow labels
