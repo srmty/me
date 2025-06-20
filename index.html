@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>srmty</title>
+    <link rel="icon" type="image/png" href="Image.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        body {
+            font-family: 'Sour Gummy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation Dock */
+        nav {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        .nav-dock {
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 16px;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.95);
+            transform: translateY(-2px);
+        }
+
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #ffffff;
+            border-radius: 50%;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Logo */
+        .logo {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            z-index: 1000;
+            color: #ffffff;
+        }
+
+        /* Page Content */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 50px;
+            padding-bottom: 120px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Home Page */
+        .home-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 170px);
+            text-align: center;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+            color: #ffffff;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1s forwards;
+            color: #ffffff;
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            opacity: 0.8;
+            font-weight: 300;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.5s forwards;
+            color: #ffffff;
+        }
+
+        .home-quote {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.25rem;
+            color: #fff;
+            opacity: 0.85;
+            margin-top: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .home-quote-quoter {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.05rem;
+            color: #fff;
+            opacity: 0.7;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        /* About Page - Fixed Layout */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: start;
+            padding: 3rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .about-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .about-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover .about-img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            width: 100%;
+        }
+
+        .about-text h2,
+        .about-content h2 {
+            font-size: 2.2rem !important;
+            font-weight: 900 !important;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .about-text p {
+            margin-bottom: 2rem;
+            font-weight: 300;
+            opacity: 0.85;
+            line-height: 1.8;
+            color: #ffffff;
+        }
+
+        .experience-section {
+            margin: 4rem 0;
+        }
+
+        .experience-section h3 {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            opacity: 0.7;
+        }
+
+        .experience-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-role {
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .experience-duration {
+            font-size: 0.75rem;
+            opacity: 0.4;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        .experience-company {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .experience-description {
+            font-size: 0.85rem;
+            opacity: 0.5;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .skills-list {
+            margin-top: 3rem;
+        }
+
+        .skills-list h3 {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill {
+            font-size: 0.85rem;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+            letter-spacing: 1px;
+            border-radius: 25px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .skill:hover {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3),
+                        0 0 40px rgba(255, 255, 255, 0.2),
+                        0 0 60px rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .skill:hover::before {
+            left: 100%;
+        }
+
+        /* About section link styles */
+        .about-link {
+            color: #ffffff;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-weight: 800 !important;
+        }
+
+        .about-link strong {
+            font-weight: 900 !important;
+        }
+
+        .about-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ffffff;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+
+        .about-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .about-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Work Page - Updated to match Research style */
+        .work-content {
+            padding: 3rem 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .work-content h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 4rem;
+            letter-spacing: 2px;
+            text-align: left;
+            opacity: 0.7;
+        }
+
+        .project {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project:last-child {
+            border-bottom: none;
+        }
+
+        .project:hover {
+            transform: translateX(5px);
+        }
+
+        .project:nth-child(2) { animation-delay: 0.1s; }
+        .project:nth-child(3) { animation-delay: 0.2s; }
+        .project:nth-child(4) { animation-delay: 0.3s; }
+        .project:nth-child(5) { animation-delay: 0.4s; }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .project h3 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .project h3 a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .project h3 a:hover {
+            opacity: 0.7;
+        }
+
+        .project-arrow {
+            font-size: 1rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: translateX(-5px);
+            margin-left: 1rem;
+        }
+
+        .project:hover .project-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .project-excerpt {
+            opacity: 0.85;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            line-height: 1.6;
+            font-size: 0.85rem;
+            color: #ffffff;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .tech {
+            font-size: 0.75rem;
+            opacity: 0.4;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        .project-year {
+            font-size: 0.75rem;
+            opacity: 0.4;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        /* Research Papers Page */
+        .research-content {
+            padding: 3rem 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .research-content h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 4rem;
+            letter-spacing: 2px;
+            text-align: left;
+            opacity: 0.7;
+        }
+
+        .research-paper {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .research-paper:last-child {
+            border-bottom: none;
+        }
+
+        .research-paper:hover {
+            transform: translateX(5px);
+        }
+
+        .research-paper:nth-child(2) { animation-delay: 0.1s; }
+        .research-paper:nth-child(3) { animation-delay: 0.2s; }
+        .research-paper:nth-child(4) { animation-delay: 0.3s; }
+        .research-paper:nth-child(5) { animation-delay: 0.4s; }
+
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-paper h3 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .research-paper h3 a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .research-paper h3 a:hover {
+            opacity: 0.7;
+        }
+
+        .paper-arrow {
+            font-size: 1rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: translateX(-5px);
+            margin-left: 1rem;
+        }
+
+        .research-paper:hover .paper-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .paper-excerpt {
+            opacity: 0.85;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            line-height: 1.6;
+            font-size: 0.85rem;
+            color: #ffffff;
+        }
+
+        .paper-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .paper-date {
+            font-size: 0.75rem;
+            opacity: 0.4;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        .paper-status {
+            font-size: 0.7rem;
+            opacity: 0.3;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        /* Contact Page - Minimal Box Design */
+        .contact-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 170px);
+        }
+
+        .contact-box {
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-box h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            opacity: 0.95;
+            color: #ffffff;
+        }
+
+        .contact-box p {
+            margin-bottom: 3rem;
+            opacity: 0.85;
+            font-weight: 300;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            color: #ffffff;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-item {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+
+        .social-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .email-item {
+            grid-column: span 3;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            font-weight: 300;
+            transition: all 0.3s ease;
+        }
+
+        .email-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                top: 1rem;
+                left: 1rem;
+                font-size: 1rem;
+            }
+
+            .nav-dock {
+                padding: 0.6rem 0.5rem;
+                gap: 0.1rem;
+                border-radius: 18px;
+                font-size: 0.95rem;
+            }
+
+            .nav-item {
+                width: 38px;
+                height: 38px;
+                font-size: 15px;
+                border-radius: 10px;
+            }
+
+            .arrow-nav {
+                min-width: 38px !important;
+                height: 38px !important;
+                font-size: 1rem !important;
+                padding: 0 0.7rem !important;
+                border-radius: 16px !important;
+                bottom: 1rem !important;
+            }
+            #arrow-left {
+                left: 1rem !important;
+            }
+            #arrow-right {
+                right: 1rem !important;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .home-quote {
+                font-size: 1.05rem;
+                margin-top: 1.2rem;
+            }
+            .home-quote-quoter {
+                font-size: 0.95rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+                padding: 2rem 0 !important;
+                max-width: 100vw !important;
+            }
+
+            .about-image {
+                position: relative;
+                width: 70px;
+                height: 70px;
+                margin: 0 auto 1.2rem auto;
+            }
+
+            .about-main {
+                padding: 0 0.2rem !important;
+            }
+
+            .work-content,
+            .research-content {
+                padding: 2rem 0;
+                max-width: 100%;
+                font-size: 0.98rem;
+            }
+
+            .work-content h2,
+            .about-text h2,
+            .research-content h2 {
+                font-size: 2rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .project-meta,
+            .experience-header,
+            .paper-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .skills {
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .contact-box {
+                margin: 0 0.5rem;
+                padding: 1.2rem;
+                border-radius: 14px;
+            }
+
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.7rem;
+            }
+
+            .email-item {
+                grid-column: span 2;
+                font-size: 0.85rem;
+                height: 40px;
+            }
+            .about-title {
+                font-size: 1.3rem !important;
+            }
+            .education-section, .experience-section {
+                margin: 1.2rem 0 1rem 0 !important;
+            }
+            .education-item, .experience-item {
+                padding: 0.5rem 0 !important;
+            }
+            .education-header, .experience-header {
+                margin-bottom: 0.2rem !important;
+            }
+            .education-institution, .education-description {
+                font-size: 0.9rem !important;
+            }
+            .skills-list h3 {
+                font-size: 0.95rem !important;
+            }
+            .skill {
+                font-size: 0.8rem !important;
+                padding: 0.5rem 1rem !important;
+                border-radius: 18px !important;
+            }
+        }
+
+        .arrow-nav:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 16px 4px #fff, 0 4px 16px rgba(0,0,0,0.25);
+            background: rgba(30,30,30,0.95);
+        }
+
+        /* Welcome Page Exit Animation */
+        @keyframes welcomeExit {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-60px);
+            }
+        }
+        .welcome-exit {
+            animation: welcomeExit 0.7s cubic-bezier(0.7,0,0.3,1) forwards;
+        }
+
+        /* --- Research Section Black & White Card Styles with Slide-Up Animation --- */
+        .research-topic-card {
+            background: rgba(20, 20, 20, 0.97);
+            border: 1.5px solid rgba(255,255,255,0.10);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            padding: 1.2rem 2rem;
+            cursor: pointer;
+            transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: slideUp 0.7s cubic-bezier(0.7,0,0.3,1) forwards;
+            animation-delay: 0.1s;
+        }
+        .research-topic-card:hover {
+            background: rgba(40, 40, 40, 1);
+            color: #fff;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+        }
+        .research-topic-arrow {
+            font-size: 1.5rem;
+            color: #fff;
+            transition: color 0.2s;
+        }
+        .paper-card {
+            background: rgba(10, 10, 10, 0.98);
+            border: 1.5px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+            margin-bottom: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            color: #fff;
+            transition: box-shadow 0.2s, border 0.2s;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: slideUp 0.7s cubic-bezier(0.7,0,0.3,1) forwards;
+        }
+        .paper-card:nth-child(1) { animation-delay: 0.2s; }
+        .paper-card:nth-child(2) { animation-delay: 0.35s; }
+        .paper-card:nth-child(3) { animation-delay: 0.5s; }
+        .paper-card:hover {
+            border: 1.5px solid #fff;
+            box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+        }
+        .paper-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .paper-links {
+            margin-top: 0.5rem;
+        }
+        .paper-link {
+            color: #fff;
+            text-decoration: underline;
+            margin-right: 1.5rem;
+            font-size: 0.98rem;
+            transition: color 0.2s;
+        }
+        .paper-link:hover {
+            color: #bbb;
+        }
+        .back-link {
+            color: #fff;
+            text-decoration: underline;
+            font-size: 1rem;
+            display: inline-block;
+            margin-top: 2rem;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: #bbb;
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .paper-desc {
+            font-size: 0.98rem;
+            color: #bbb;
+            margin-bottom: 0.7rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <div class="loader"></div>
+        <div style="margin-top: 2rem; color: #f8f8ff; font-size: 1.2rem; letter-spacing: 2px;">Loading...</div>
+    </div>
+    <div class="welcome-page" style="display:none;position:fixed;z-index:9998;top:0;left:0;width:100vw;height:100vh;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+        <img src="Image.png" alt="Welcome" style="max-width:180px;width:60vw;height:auto;border-radius:24px;box-shadow:0 4px 32px rgba(0,0,0,0.25);margin-bottom:2rem;">
+        <div style="color:#fff;font-size:2rem;font-weight:700;letter-spacing:2px;margin-bottom:1.5rem;text-align:center;">Welcome to Smruti's Portfolio</div>
+        <button id="continue-btn" style="padding:0.8rem 2.2rem;font-size:1.1rem;border-radius:18px;border:none;background:#8cf;color:#000;font-weight:700;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.18);transition:background 0.2s;">Continue</button>
+    </div>
+
+    <nav>
+        <div class="nav-dock">
+            <ul class="nav-links">
+                <li><button class="nav-item active" data-page="home" title="Home">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12L12 5l9 7"/><rect x="6" y="12" width="12" height="7" rx="2"/><path d="M9 21V17a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg>
+                </button></li>
+                <li><button class="nav-item" data-page="about" title="About">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-3.3137 3.134-6 8-6s8 2.6863 8 6"/></svg>
+                </button></li>
+                <li><button class="nav-item" data-page="project" title="Project">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg>
+                </button></li>
+                <li><button class="nav-item" data-page="research" title="Research Papers I've Implemented">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19V6a2 2 0 0 1 2-2h7"/><path d="M22 19V6a2 2 0 0 0-2-2h-7"/><path d="M12 5v14"/></svg>
+                </button></li>
+                <li><button class="nav-item" data-page="blog" title="Blog">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </button></li>
+                <li><button class="nav-item" data-page="contact" title="Contact">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+                </button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Navigation Arrows -->
+    <button id="arrow-left" title="Previous Page" class="arrow-nav" style="position:fixed;bottom:2rem;left:2rem;z-index:1100;background:rgba(15,15,15,0.85);border:1px solid rgba(255,255,255,0.12);border-radius:24px;width:auto;min-width:48px;height:48px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.15rem;box-shadow:0 4px 16px rgba(0,0,0,0.2);cursor:pointer;transition:background 0.2s,padding 0.2s; padding:0 1.2rem;gap:0.5rem;">
+        <span style="font-size:1.5rem;">&#8592;</span>
+        <span id="arrow-left-label"></span>
+    </button>
+    <button id="arrow-right" title="Next Page" class="arrow-nav" style="position:fixed;bottom:2rem;right:2rem;z-index:1100;background:rgba(15,15,15,0.85);border:1px solid rgba(255,255,255,0.12);border-radius:24px;width:auto;min-width:48px;height:48px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.15rem;box-shadow:0 4px 16px rgba(0,0,0,0.2);cursor:pointer;transition:background 0.2s,padding 0.2s; padding:0 1.2rem;gap:0.5rem;">
+        <span id="arrow-right-label"></span>
+        <span style="font-size:1.5rem;">&#8594;</span>
+    </button>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <div class="container">
+            <div class="home-content">
+                <div class="hero-text">
+                    <a href="#blackhole" id="blackhole-link" title="Click for a surprise!">
+                        <img src="image.png" alt="Profile Image" style="display:block;margin:0 auto 2rem auto;max-width:160px;width:100%;height:auto;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.15);">
+                    </a>
+                    <h1>Hi,Smruti here</h1>
+                    <p class="subtitle">A LEARNER</p>
+                    <p>I study math. I code. I sleep. I repeat.</p>
+                    <div class="home-quote">"I truly believe that we are the creators of our own destiny and our own paths and what we really want."</div>
+                    <div class="home-quote-quoter">— Novak Djokovic</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page">
+        <div class="container">
+            <div class="about-content about-main fade-in" style="display:block;max-width:600px;margin:0 auto;padding:3rem 0;">
+                <div class="about-image">
+                    <img src="pp.png" alt="Smruti's Profile" class="about-img">
+                </div>
+                <h2 class="about-title" style="font-size:2.2rem;font-weight:900;margin-bottom:2rem;letter-spacing:2px;text-align:left;opacity:1;">ABOUT</h2>
+
+                <p style="opacity:0.7;margin-bottom:1rem;font-weight:300;line-height:1.6;font-size:0.95rem;">
+                    I'm Smruti, studying Mathematics at <a href="https://en.wikipedia.org/wiki/National_Institute_of_Technology_Rourkela" class="about-link" target="_blank"><strong>NIT Rourkela</strong></a>.
+                </p>
+                <p style="opacity:0.7;margin-bottom:1rem;font-weight:300;line-height:1.6;font-size:0.95rem;">
+                    My interests: <a href="https://en.wikipedia.org/wiki/Mathematics" class="about-link" target="_blank"><strong>Mathematics</strong></a>, <a href="https://en.wikipedia.org/wiki/Computer_vision" class="about-link" target="_blank"><strong>Computer Vision</strong></a>, <a href="https://en.wikipedia.org/wiki/Large_language_model" class="about-link" target="_blank"><strong>LLMs</strong></a>, and problem solving.
+                </p>
+                <p style="opacity:0.7;margin-bottom:1rem;font-weight:300;line-height:1.6;font-size:0.95rem;">
+                    I enjoy coding, <a href="https://en.wikipedia.org/wiki/Tennis" class="about-link" target="_blank"><strong>tennis</strong></a>, <a href="https://en.wikipedia.org/wiki/Cricket" class="about-link" target="_blank"><strong>cricket</strong></a>, and believer of <a href="https://en.wikipedia.org/wiki/Nondualism" class="about-link" target="_blank"><strong>Non-duality</strong></a>.
+                </p>
+                
+                <div class="education-section" style="margin: 2rem 0 1.5rem 0;">
+                    <h3 style="font-size:1rem;letter-spacing:2px;margin-bottom:0.7rem;opacity:0.7;">EDUCATION</h3>
+                    <div class="education-item" style="padding:0.7rem 0;">
+                         <div class="education-header" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.3rem;">
+                             <div class="education-degree" style="font-size:1rem;font-weight:700;letter-spacing:1px;">B.Sc. Mathematics</div>
+                             <div class="education-duration" style="font-size:0.85rem;opacity:0.6;letter-spacing:1px;font-weight:400;">2023 - Present</div>
+                         </div>
+                         <div class="education-institution" style="font-size:0.95rem;opacity:0.85;letter-spacing:0.5px;">
+                             <a href="https://en.wikipedia.org/wiki/National_Institute_of_Technology_Rourkela" class="about-link" target="_blank"><strong>NIT Rourkela</strong></a>
+                         </div>
+                         <div class="education-description" style="font-size:0.92rem;opacity:0.7;margin-top:0.5rem;line-height:1.5;">
+                             Currently pursuing a Bachelor of Science in Mathematics, focusing on foundational mathematics, problem solving, and applications in computer science and AI.
+                         </div>
+                     </div>
+                 </div>
+                
+                <div class="experience-section">
+                    <h3 style="font-size:1rem;letter-spacing:2px;margin-bottom:0.7rem;opacity:0.7;">EXPERIENCE</h3>
+                    <div class="experience-item" style="padding:0.7rem 0 1.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+                        <div class="experience-header" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+                            <div class="experience-role" style="font-size:1rem;font-weight:400;letter-spacing:1px;">Senior Frontend Developer</div>
+                            <div class="experience-duration" style="font-size:0.75rem;opacity:0.4;letter-spacing:1px;font-weight:300;">2022 - PRESENT</div>
+                        </div>
+                        <div class="experience-company" style="font-size:0.85rem;opacity:0.6;margin-bottom:0.5rem;letter-spacing:0.5px;">Tech Innovations Inc.</div>
+                        <div class="experience-description" style="font-size:0.85rem;opacity:0.5;line-height:1.6;font-weight:300;">Leading frontend development for modern web applications, focusing on performance optimization and user experience enhancement.</div>
+                    </div>
+                    <!-- <div class="experience-item" style="padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+                        <div class="experience-header" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+                            <div class="experience-role" style="font-size:1rem;font-weight:400;letter-spacing:1px;">Full Stack Developer</div>
+                            <div class="experience-duration" style="font-size:0.75rem;opacity:0.4;letter-spacing:1px;font-weight:300;">2020 - 2022</div>
+                        </div>
+                        <div class="experience-company" style="font-size:0.85rem;opacity:0.6;margin-bottom:0.5rem;letter-spacing:0.5px;">Digital Solutions Ltd.</div>
+                        <div class="experience-description" style="font-size:0.85rem;opacity:0.5;line-height:1.6;font-weight:300;">Developed and maintained full-stack applications using modern technologies, collaborated with cross-functional teams.</div>
+                    </div> -->
+                    <!-- <div class="experience-item" style="padding:1.5rem 0;">
+                        <div class="experience-header" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+                            <div class="experience-role" style="font-size:1rem;font-weight:400;letter-spacing:1px;">Web Developer</div>
+                            <div class="experience-duration" style="font-size:0.75rem;opacity:0.4;letter-spacing:1px;font-weight:300;">2018 - 2020</div>
+                        </div>
+                        <div class="experience-company" style="font-size:0.85rem;opacity:0.6;margin-bottom:0.5rem;letter-spacing:0.5px;">Creative Agency</div>
+                        <div class="experience-description" style="font-size:0.85rem;opacity:0.5;line-height:1.6;font-weight:300;">Created responsive websites and web applications for various clients, focusing on clean code and modern design principles.</div>
+                    </div> -->
+                </div>
+                <div class="skills-list">
+                    <h3 style="font-size:1rem;letter-spacing:2px;margin-bottom:1rem;opacity:0.7;">EXPERTISE</h3>
+                    <div class="skills" style="display:flex;flex-wrap:wrap;gap:1rem;">
+                        <div class="skill">C++</div>
+                        <div class="skill">Python</div>
+                        <div class="skill">Java</div>
+                        <div class="skill">Julia</div>
+                        <!-- <div class="skill">TypeScript</div>
+                        <div class="skill">Python</div>
+                        <div class="skill">HTML/CSS</div>
+                        <div class="skill">Three.js</div>
+                        <div class="skill">GraphQL</div>
+                        <div class="skill">MongoDB</div>
+                        <div class="skill">PostgreSQL</div>
+                        <div class="skill">AWS</div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WORK PAGE -->
+    <div id="project" class="page">
+        <div class="container">
+            <div class="work-content">
+                <h2>PROJECTS</h2>
+                <div class="projects-grid">
+
+                    <article class="project">
+                        <div class="project-header">
+                            <h3><a href="#proj1-detail" class="project-detail-link" data-project="proj1-detail">Interactive Data Visualization Platform</a></h3>
+                            <div class="project-arrow">→</div>
+                        </div>
+                        <p class="project-excerpt">A comprehensive dashboard for real-time data analysis with interactive charts and customizable visualizations built with D3.js and React.</p>
+                        <div class="project-meta">
+                            <div class="project-tech">
+                                <span class="tech">REACT</span>
+                                <span class="tech">D3.JS</span>
+                                <span class="tech">NODE.JS</span>
+                            </div>
+                            <span class="project-year">2024</span>
+                        </div>
+                    </article>
+
+                    <!-- <article class="project">
+                        <div class="project-header">
+                            <h3><a href="#">E-Commerce Mobile App</a></h3>
+                            <div class="project-arrow">→</div>
+                        </div>
+                        <p class="project-excerpt">Modern mobile commerce application with seamless user experience, payment integration, and real-time inventory management.</p>
+                        <div class="project-meta">
+                            <div class="project-tech">
+                                <span class="tech">REACT NATIVE</span>
+                                <span class="tech">FIREBASE</span>
+                                <span class="tech">STRIPE</span>
+                            </div>
+                            <span class="project-year">2023</span>
+                        </div>
+                    </article> -->
+
+                    <!-- <article class="project">
+                        <div class="project-header">
+                            <h3><a href="#">AI-Powered Content Management System</a></h3>
+                            <div class="project-arrow">→</div>
+                        </div>
+                        <p class="project-excerpt">Intelligent CMS with automated content categorization, SEO optimization, and machine learning-powered recommendations.</p>
+                        <div class="project-meta">
+                            <div class="project-tech">
+                                <span class="tech">PYTHON</span>
+                                <span class="tech">TENSORFLOW</span>
+                                <span class="tech">DJANGO</span>
+                            </div>
+                            <span class="project-year">2023</span>
+                        </div>
+                    </article> -->
+
+                    <!-- <article class="project">
+                        <div class="project-header">
+                            <h3><a href="#">3D Portfolio Website</a></h3>
+                            <div class="project-arrow">→</div>
+                        </div>
+                        <p class="project-excerpt">Immersive 3D portfolio experience with interactive animations, showcasing creative projects in a virtual environment.</p>
+                        <div class="project-meta">
+                            <div class="project-tech">
+                                <span class="tech">THREE.JS</span>
+                                <span class="tech">WEBGL</span>
+                                <span class="tech">GSAP</span>
+                            </div>
+                            <span class="project-year">2022</span>
+                        </div>
+                    </article> -->
+
+                    <!-- <article class="project">
+                        <div class="project-header">
+                            <h3><a href="#">Blockchain-Based Voting System</a></h3>
+                            <div class="project-arrow">→</div>
+                        </div>
+                        <p class="project-excerpt">Secure and transparent voting platform using blockchain technology to ensure election integrity and voter privacy.</p>
+                        <div class="project-meta">
+                            <div class="project-tech">
+                                <span class="tech">SOLIDITY</span>
+                                <span class="tech">WEB3</span>
+                                <span class="tech">ETHEREUM</span>
+                            </div>
+                            <span class="project-year">2022</span>
+                        </div>
+                    </article> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESEARCH PAGE -->
+    <div id="research" class="page">
+        <div class="container">
+            <div class="research-content">
+                <h2>RESEARCH PAPERS I've Implemented</h2>
+                <div class="research-papers">
+                    <div class="research-topic-card" id="cnn-papers-link">
+                        <span> CNN papers </span>
+                        <span class="research-topic-arrow">→</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CNN PAPERS SUBPAGE -->
+    <div id="cnn-papers" class="page" style="display:none;">
+        <div class="container">
+            <div class="research-content">
+                <h2 style="margin-bottom:2rem;">CNN papers</h2>
+                <div class="research-papers">
+                    <div class="paper-card">
+                        <div class="paper-title">AlexNet</div>
+                        <div class="paper-desc">A landmark deep CNN that won the 2012 ImageNet competition, introducing ReLU, dropout, and GPU training for large-scale image classification.</div>
+                        <div class="paper-links">
+                            <a class="paper-link" href="https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html" target="_blank">Original Paper</a>
+                            <a class="paper-link" href="https://github.com/srmty09/Implemented-Papers/tree/main/CNN/AlexNet" target="_blank">My Code</a>
+                        </div>
+                    </div>
+                    <div class="paper-card">
+                        <div class="paper-title">LeNet</div>
+                        <div class="paper-desc">One of the earliest convolutional neural networks, designed for handwritten digit recognition and foundational for modern deep learning.</div>
+                        <div class="paper-links">
+                            <a class="paper-link" href="http://vision.stanford.edu/cs598_spring07/papers/Lecun98.pdf" target="_blank">Original Paper</a>
+                            <a class="paper-link" href="https://github.com/srmty09/Implemented-Papers/tree/main/CNN/LeNet" target="_blank">My Code</a>
+                        </div>
+                    </div>
+                    <div class="paper-card">
+                        <div class="paper-title">VGG</div>
+                        <div class="paper-desc">A very deep CNN architecture using small (3x3) filters, demonstrating that increasing depth improves image recognition performance.</div>
+                        <div class="paper-links">
+                            <a class="paper-link" href="https://arxiv.org/abs/1409.1556v6" target="_blank">Original Paper</a>
+                            <a class="paper-link" href="https://github.com/srmty09/Implemented-Papers/tree/main/CNN/VGG" target="_blank">My Code</a>
+                        </div>
+                    </div>
+                    <div class="paper-card">
+                        <div class="paper-title">Inception Model</div>
+                        <div class="paper-desc">A deep convolutional neural network that introduced the "Inception module," which allows for more efficient computation and better performance by using varying filter sizes in parallel.</div>
+                        <div class="paper-links">
+                            <a class="paper-link" href="https://arxiv.org/abs/1409.4842" target="_blank">Original Paper</a>
+                            <a class="paper-link" href="https://github.com/srmty09/Implemented-Papers/tree/main/CNN/Inception%20Net" target="_blank">My Code</a>
+                        </div>
+                    </div>
+                    <a href="#research" id="back-to-research" class="back-link">← Back to Research</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOG PAGE -->
+    <div id="blog" class="page">
+        <div class="container">
+            <div class="research-content">
+                <h2>BLOG POSTS</h2>
+                <div class="research-papers">
+                    <article class="research-paper">
+                        <div class="paper-header">
+                            <h3><a href="https://medium.com/@smruti09">Getting Started with Web Development in 2024</a></h3>
+                            <div class="paper-arrow">→</div>
+                        </div>
+                        <p class="paper-excerpt">A comprehensive guide for beginners looking to start their journey in web development, covering modern tools, frameworks, and best practices.</p>
+                        <div class="paper-meta">
+                            <span class="paper-date">MAY 2024</span>
+                            <span class="paper-status">TECHNICAL</span>
+                        </div>
+                    </article>
+
+                    <!-- <article class="research-paper">
+                        <div class="paper-header">
+                            <h3><a href="https://medium.com/@smruti09">The Future of AI in Web Development</a></h3>
+                            <div class="paper-arrow">→</div>
+                        </div>
+                        <p class="paper-excerpt">Exploring how artificial intelligence is transforming web development, from automated code generation to intelligent user interfaces.</p>
+                        <div class="paper-meta">
+                            <span class="paper-date">APRIL 2024</span>
+                            <span class="paper-status">AI/ML</span>
+                        </div>
+                    </article> -->
+
+                    <!-- <article class="research-paper">
+                        <div class="paper-header">
+                            <h3><a href="https://medium.com/@smruti09">Building Responsive Web Applications</a></h3>
+                            <div class="paper-arrow">→</div>
+                        </div>
+                        <p class="paper-excerpt">Best practices and techniques for creating responsive web applications that work seamlessly across all devices and screen sizes.</p>
+                        <div class="paper-meta">
+                            <span class="paper-date">MARCH 2024</span>
+                            <span class="paper-status">TUTORIAL</span>
+                        </div>
+                    </article> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-box">
+                    <h2>GET IN TOUCH</h2>
+                    <p>Let's collaborate on your next project or discuss opportunities to work together.</p>
+                    
+                    <div class="social-grid">
+                        <a href="https://github.com/srmty09" class="social-item" title="GitHub">
+                            <span>⟨/⟩</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/smruti-ranjan-mohanty-2b3122246/" class="social-item" title="LinkedIn">
+                            <span>in</span>
+                        </a>
+                        <a href="https://x.com/musafirrr__" class="social-item" title="Twitter">
+                            <span>@</span>
+                        </a>
+                        <a href="mailto:smruti45ranjan@gmail.com" class="email-item">
+                            smruti45ranjan@gmail.com
+                        </a>
+                        <a href="recommend.html" class="email-item" style="margin-top:0.5rem;" target="_blank">
+                            Recommendations Website
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BLACKHOLE EASTER EGG PAGE -->
+    <div id="blackhole" class="page">
+        <div class="container" style="text-align:center;padding-top:4rem;position:relative;">
+            <h2 style="font-size:2rem;font-weight:900;margin-bottom:1.5rem;letter-spacing:2px;color:#fff;">EULER'S FORMULA</h2>
+            <p style="color:#fff;opacity:0.85;font-size:1.1rem;max-width:600px;margin:0 auto 2rem auto;line-height:1.7;">
+                You found the easter egg!<br><br>
+                <strong>Euler's formula</strong> is often called the most beautiful equation in mathematics:<br>
+                <span style="display:inline-block;margin:1rem 0;font-size:1.3rem;font-weight:700;letter-spacing:1px;">e<sup>iπ</sup> + 1 = 0</span><br><br>
+                It links five of the most important constants in mathematics: <strong>e</strong> (the base of natural logarithms), <strong>i</strong> (the imaginary unit), <strong>π</strong> (pi), <strong>1</strong>, and <strong>0</strong>—all in a single, elegant equation. This formula is a bridge between algebra, geometry, and complex analysis, and is celebrated for its simplicity and depth.<br><br>
+                As Richard Feynman called it, "the most remarkable formula in mathematics."
+            </p>
+            <img src="eu.jpg" alt="Leonhard Euler" style="max-width:120px;width:100%;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,0.5);margin-bottom:1.2rem;">
+            <div style="color:#fff;opacity:0.7;font-size:0.95rem;margin-bottom:2rem;">Leonhard Euler (1707–1783)</div>
+            <a href="#home" style="color:#fff;text-decoration:underline;opacity:0.8;font-size:1rem;">Back to Home</a>
+        </div>
+    </div>
+
+    <!-- RESEARCH PAPER 1 DETAIL PAGE -->
+    <div id="paper1-detail" class="page">
+        <div class="container" style="max-width:600px;margin:0 auto;padding:3rem 0;">
+            <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:2rem;letter-spacing:2px;color:#fff;">Machine Learning Approaches to Web Performance Optimization</h2>
+            <p style="color:#fff;opacity:0.85;font-size:1.05rem;margin-bottom:2rem;">This project explores how machine learning can be used to automatically optimize web application performance, focusing on predictive resource loading and adaptive UI rendering.</p>
+            <div style="margin-bottom:2rem;">
+                <strong style="color:#fff;">Code:</strong> <a href="https://github.com/yourusername/ml-web-perf" target="_blank" style="color:#8cf;text-decoration:underline;">View on GitHub</a>
+            </div>
+            <div style="margin-bottom:2.5rem;">
+                <strong style="color:#fff;">Original Paper:</strong> <a href="https://arxiv.org/abs/1234.5678" target="_blank" style="color:#8cf;text-decoration:underline;">Read on arXiv</a>
+            </div>
+            <a href="#research" class="back-to-research" style="color:#fff;text-decoration:underline;opacity:0.8;font-size:1rem;">← Back to Research</a>
+        </div>
+    </div>
+
+    <!-- RESEARCH PAPER 2 DETAIL PAGE -->
+    <div id="paper2-detail" class="page">
+        <div class="container" style="max-width:600px;margin:0 auto;padding:3rem 0;">
+            <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:2rem;letter-spacing:2px;color:#fff;">Blockchain Integration in Modern Web Applications</h2>
+            <p style="color:#fff;opacity:0.85;font-size:1.05rem;margin-bottom:2rem;">Comprehensive analysis of implementing blockchain technology in web applications, examining security implications, performance considerations, and user experience challenges.</p>
+            <div style="margin-bottom:2rem;">
+                <strong style="color:#fff;">Code:</strong> <a href="https://github.com/yourusername/blockchain-webapp" target="_blank" style="color:#8cf;text-decoration:underline;">View on GitHub</a>
+            </div>
+            <div style="margin-bottom:2.5rem;">
+                <strong style="color:#fff;">Original Paper:</strong> <a href="https://arxiv.org/abs/2345.6789" target="_blank" style="color:#8cf;text-decoration:underline;">Read on arXiv</a>
+            </div>
+            <a href="#research" class="back-to-research" style="color:#fff;text-decoration:underline;opacity:0.8;font-size:1rem;">← Back to Research</a>
+        </div>
+    </div>
+
+    <!-- RESEARCH PAPER 3 DETAIL PAGE -->
+    <div id="paper3-detail" class="page">
+        <div class="container" style="max-width:600px;margin:0 auto;padding:3rem 0;">
+            <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:2rem;letter-spacing:2px;color:#fff;">Real-time Data Visualization: Performance and Scalability</h2>
+            <p style="color:#fff;opacity:0.85;font-size:1.05rem;margin-bottom:2rem;">Study on optimizing real-time data visualization techniques for large-scale applications, comparing WebGL, Canvas, and SVG rendering approaches.</p>
+            <div style="margin-bottom:2rem;">
+                <strong style="color:#fff;">Code:</strong> <a href="https://github.com/yourusername/realtime-viz" target="_blank" style="color:#8cf;text-decoration:underline;">View on GitHub</a>
+            </div>
+            <div style="margin-bottom:2.5rem;">
+                <strong style="color:#fff;">Original Paper:</strong> <a href="https://arxiv.org/abs/3456.7890" target="_blank" style="color:#8cf;text-decoration:underline;">Read on arXiv</a>
+            </div>
+            <a href="#research" class="back-to-research" style="color:#fff;text-decoration:underline;opacity:0.8;font-size:1rem;">← Back to Research</a>
+        </div>
+    </div>
+
+    <!-- RESEARCH PAPER 4 DETAIL PAGE -->
+    <div id="paper4-detail" class="page">
+        <div class="container" style="max-width:600px;margin:0 auto;padding:3rem 0;">
+            <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:2rem;letter-spacing:2px;color:#fff;">Accessibility in Modern JavaScript Frameworks</h2>
+            <p style="color:#fff;opacity:0.85;font-size:1.05rem;margin-bottom:2rem;">Evaluation of accessibility features and limitations across popular JavaScript frameworks, with recommendations for inclusive design practices.</p>
+            <div style="margin-bottom:2rem;">
+                <strong style="color:#fff;">Code:</strong> <a href="https://github.com/yourusername/js-accessibility" target="_blank" style="color:#8cf;text-decoration:underline;">View on GitHub</a>
+            </div>
+            <div style="margin-bottom:2.5rem;">
+                <strong style="color:#fff;">Original Paper:</strong> <a href="https://arxiv.org/abs/4567.8901" target="_blank" style="color:#8cf;text-decoration:underline;">Read on arXiv</a>
+            </div>
+            <a href="#research" class="back-to-research" style="color:#fff;text-decoration:underline;opacity:0.8;font-size:1rem;">← Back to Research</a>
+        </div>
+    </div>
+
+    <!-- RESEARCH PAPER 5 DETAIL PAGE -->
+    <div id="paper5-detail" class="page">
+        <div class="container" style="max-width:600px;margin:0 auto;padding:3rem 0;">
+            <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:2rem;letter-spacing:2px;color:#fff;">The Future of WebAssembly in Frontend Development</h2>
+            <p style="color:#fff;opacity:0.85;font-size:1.05rem;margin-bottom:2rem;">Exploring the potential applications and performance benefits of WebAssembly in modern frontend development, with practical implementation examples.</p>
+            <div style="margin-bottom:2rem;">
+                <strong style="color:#fff;">Code:</strong> <a href="https://github.com/yourusername/webassembly-frontend" target="_blank" style="color:#8cf;text-decoration:underline;">View on GitHub</a>
+            </div>
+            <div style="margin-bottom:2.5rem;">
+                <strong style="color:#fff;">Original Paper:</strong> <a href="https://arxiv.org/abs/5678.9012" target="_blank" style="color:#8cf;text-decoration:underline;">Read on arXiv</a>
+            </div>
+            <a href="#research" class="back-to-research" style="color:#fff;text-decoration:underline;opacity:0.8;font-size:1rem;">← Back to Research</a>
+        </div>
+    </div>
+
+    <!-- PROJECT 1 DETAIL PAGE -->
+    <div id="proj1-detail" class="page">
+        <div class="container" style="max-width:600px;margin:0 auto;padding:3rem 0;">
+            <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:2rem;letter-spacing:2px;color:#fff;">Interactive Data Visualization Platform</h2>
+            <p style="color:#fff;opacity:0.85;font-size:1.05rem;margin-bottom:2rem;">A comprehensive dashboard for real-time data analysis with interactive charts and customizable visualizations built with D3.js and React.</p>
+            <div style="margin-bottom:2rem;">
+                <strong style="color:#fff;">Code:</strong> <a href="https://github.com/yourusername/data-viz-platform" target="_blank" style="color:#8cf;text-decoration:underline;">View on GitHub</a>
+            </div>
+            <div style="margin-bottom:2.5rem;">
+                <strong style="color:#fff;">Demo:</strong> <a href="https://your-demo-link.com" target="_blank" style="color:#8cf;text-decoration:underline;">Live Demo</a>
+            </div>
+            <a href="#project" class="back-to-projects" style="color:#fff;text-decoration:underline;opacity:0.8;font-size:1rem;">← Back to Projects</a>
+        </div>
+    </div>
+
+    <script>
+        // Remove loading screen after page loads, then show welcome page
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.querySelector('.loading').classList.add('hidden');
+                document.querySelector('.welcome-page').style.display = 'flex';
+            }, 1000);
+        });
+        // Hide welcome page on continue
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('continue-btn');
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    const welcomePage = document.querySelector('.welcome-page');
+                    // Add exit animation
+                    welcomePage.classList.add('welcome-exit');
+                    // Set a flag to skip home fade-in
+                    window.justContinuedFromWelcome = true;
+                    setTimeout(() => {
+                        welcomePage.style.display = 'none';
+                        // Optionally, ensure home is visible (in case it was hidden)
+                        document.getElementById('home').classList.add('active');
+                    }, 700);
+                });
+            }
+        });
+
+        // Navigation functionality
+        const navItems = document.querySelectorAll('.nav-item');
+        const pages = document.querySelectorAll('.page');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const targetPage = item.getAttribute('data-page');
+                // Remove active class from all nav items and pages
+                navItems.forEach(nav => nav.classList.remove('active'));
+                pages.forEach(page => page.classList.remove('active'));
+                // Add active class to clicked nav item and target page
+                item.classList.add('active');
+                document.getElementById(targetPage).classList.add('active');
+                // Trigger fade-in animation for content
+                const activePageContent = document.getElementById(targetPage);
+                let animatedElements = activePageContent.querySelectorAll('.project, .research-paper, .experience-item');
+                // If about page, also animate the main about content
+                if (targetPage === 'about') {
+                    const aboutMain = activePageContent.querySelector('.about-main');
+                    if (aboutMain) {
+                        animatedElements = Array.from(animatedElements);
+                        animatedElements.unshift(aboutMain);
+                    }
+                }
+                // Only skip fade-in for home page if justContinuedFromWelcome is set
+                if (!(targetPage === 'home' && window.justContinuedFromWelcome)) {
+                    animatedElements.forEach((el, index) => {
+                        el.classList.remove('fade-in');
+                        // Force reflow
+                        void el.offsetWidth;
+                        el.classList.add('fade-in');
+                        el.style.animationDelay = `${index * 0.1}s`;
+                    });
+                }
+                // Reset the flag after first home visit
+                if (targetPage === 'home') {
+                    window.justContinuedFromWelcome = false;
+                }
+                // Update arrow labels
+                updateArrowLabels();
+            });
+        });
+
+        // Smooth hover effects for projects and papers
+        document.addEventListener('DOMContentLoaded', function() {
+            const hoverElements = document.querySelectorAll('.project, .research-paper');
+            
+            hoverElements.forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(5px)';
+                });
+                
+                element.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateX(0)';
+                });
+            });
+        });
+
+        // Skills animation on hover
+        document.addEventListener('DOMContentLoaded', function() {
+            const skills = document.querySelectorAll('.skill');
+            
+            skills.forEach(skill => {
+                skill.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px) scale(1.05)';
+                });
+                
+                skill.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+
+        // Add click handlers for external links (you can customize these)
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectLinks = document.querySelectorAll('.project h3 a, .research-paper h3 a');
+            
+            projectLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Only prevent default if the link is empty or '#'
+                    if (!this.getAttribute('href') || this.getAttribute('href') === '#') {
+                        e.preventDefault();
+                        console.log('Opening project:', this.textContent);
+                    }
+                    // Otherwise, let the link work normally
+                });
+            });
+        });
+
+        // Contact form functionality (if you want to add a form later)
+        document.addEventListener('DOMContentLoaded', function() {
+            const socialItems = document.querySelectorAll('.social-item');
+            
+            socialItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === '#') {
+                        e.preventDefault();
+                        // Add your social media URLs here
+                        console.log('Social link clicked:', this.getAttribute('title'));
+                    }
+                });
+            });
+        });
+
+        // Easter egg: show blackhole page when home profile pic is clicked
+        document.addEventListener('DOMContentLoaded', function() {
+            const blackholeLink = document.getElementById('blackhole-link');
+            if (blackholeLink) {
+                blackholeLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    pages.forEach(page => page.classList.remove('active'));
+                    document.getElementById('blackhole').classList.add('active');
+                });
+            }
+            // Back to Home from blackhole page
+            const backToHome = document.querySelector('#blackhole a[href="#home"]');
+            if (backToHome) {
+                backToHome.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    pages.forEach(page => page.classList.remove('active'));
+                    document.getElementById('home').classList.add('active');
+                });
+            }
+        });
+
+        // Page order for arrow navigation
+        const pageOrder = ["home", "about", "project", "research", "blog", "contact"];
+        const leftArrow = document.getElementById('arrow-left');
+        const rightArrow = document.getElementById('arrow-right');
+
+        function getCurrentPageIndex() {
+            // Only consider main pages in pageOrder
+            for (let i = 0; i < pageOrder.length; i++) {
+                const page = document.getElementById(pageOrder[i]);
+                if (page && page.classList.contains('active')) {
+                    return i;
+                }
+            }
+            // If no main page is active (e.g., a detail page is active),
+            // return the last main page that was active (by checking nav dock)
+            for (let i = 0; i < pageOrder.length; i++) {
+                const nav = Array.from(navItems).find(nav => nav.getAttribute('data-page') === pageOrder[i]);
+                if (nav && nav.classList.contains('active')) {
+                    return i;
+                }
+            }
+            return 0;
+        }
+
+        function showPageByIndex(idx) {
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageOrder[idx]).classList.add('active');
+            // Sync nav dock
+            navItems.forEach(nav => nav.classList.remove('active'));
+            const pageName = pageOrder[idx];
+            const navToActivate = Array.from(navItems).find(nav => nav.getAttribute('data-page') === pageName);
+            if (navToActivate) navToActivate.classList.add('active');
+            // Update arrow labels
+            updateArrowLabels();
+        }
+
+        if (leftArrow && rightArrow) {
+            leftArrow.addEventListener('click', function() {
+                let idx = getCurrentPageIndex();
+                idx = (idx - 1 + pageOrder.length) % pageOrder.length;
+                showPageByIndex(idx);
+            });
+            rightArrow.addEventListener('click', function() {
+                let idx = getCurrentPageIndex();
+                idx = (idx + 1) % pageOrder.length;
+                showPageByIndex(idx);
+            });
+        }
+
+        // Hide arrows on blackhole (easter egg) page
+        function updateArrowVisibility() {
+            const isBlackhole = document.getElementById('blackhole').classList.contains('active');
+            if (leftArrow && rightArrow) {
+                leftArrow.style.display = isBlackhole ? 'none' : 'flex';
+                rightArrow.style.display = isBlackhole ? 'none' : 'flex';
+            }
+        }
+        // Update on navigation
+        document.addEventListener('click', updateArrowVisibility, true);
+        // Update on page load
+        document.addEventListener('DOMContentLoaded', updateArrowVisibility);
+
+        // Page display names for arrows
+        const pageDisplayNames = {
+            home: 'Home',
+            about: 'About',
+            project: 'Work',
+            research: 'Research',
+            blog: 'Blog',
+            contact: 'Contact'
+        };
+
+        const leftLabel = document.getElementById('arrow-left-label');
+        const rightLabel = document.getElementById('arrow-right-label');
+
+        function updateArrowLabels() {
+            const idx = getCurrentPageIndex();
+            // For left arrow: show the page you will go to if you click left (previous in the cycle)
+            // For right arrow: show the page you will go to if you click right (next in the cycle)
+            let prevIdx = idx - 1;
+            let nextIdx = idx + 1;
+            if (prevIdx < 0) prevIdx = pageOrder.length - 1;
+            if (nextIdx >= pageOrder.length) nextIdx = 0;
+            if (leftLabel) leftLabel.textContent = pageDisplayNames[pageOrder[prevIdx]];
+            if (rightLabel) rightLabel.textContent = pageDisplayNames[pageOrder[nextIdx]];
+        }
+
+        // Update labels on navigation and page load
+        document.addEventListener('click', updateArrowLabels, true);
+        document.addEventListener('DOMContentLoaded', updateArrowLabels);
+
+        // Research paper detail navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const paperLinks = document.querySelectorAll('.paper-detail-link');
+            paperLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    pages.forEach(page => page.classList.remove('active'));
+                    const target = this.getAttribute('data-paper');
+                    document.getElementById(target).classList.add('active');
+                });
+            });
+            // Back to research from detail (attach to all with class)
+            const backBtns = document.querySelectorAll('.back-to-research');
+            backBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    pages.forEach(page => page.classList.remove('active'));
+                    document.getElementById('research').classList.add('active');
+                    updateArrowLabels();
+                });
+            });
+        });
+
+        // Project detail navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectLinks = document.querySelectorAll('.project-detail-link');
+            projectLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    pages.forEach(page => page.classList.remove('active'));
+                    const target = this.getAttribute('data-project');
+                    document.getElementById(target).classList.add('active');
+                    updateArrowLabels();
+                });
+            });
+            // Back to projects from detail
+            const backBtns = document.querySelectorAll('.back-to-projects');
+            backBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    pages.forEach(page => page.classList.remove('active'));
+                    document.getElementById('project').classList.add('active');
+                    updateArrowLabels();
+                });
+            });
+        });
+
+        // Add navigation for CNN papers subpage
+        document.addEventListener('DOMContentLoaded', function() {
+            var cnnLink = document.getElementById('cnn-papers-link');
+            var cnnPage = document.getElementById('cnn-papers');
+            var researchPage = document.getElementById('research');
+            var backBtn = document.getElementById('back-to-research');
+            if (cnnLink && cnnPage && researchPage) {
+                cnnLink.addEventListener('click', function() {
+                    researchPage.classList.remove('active');
+                    cnnPage.style.display = 'block';
+                    cnnPage.classList.add('active');
+                });
+            }
+            if (backBtn && cnnPage && researchPage) {
+                backBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    cnnPage.classList.remove('active');
+                    cnnPage.style.display = 'none';
+                    researchPage.classList.add('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
