@@ -1153,33 +1153,10 @@
             <div class="research-content">
                 <h2>PROJECTS</h2>
                 <div class="research-papers">
-                    <div class="research-topic-card" id="web-projects-link">
-                        <span> Web Development Projects </span>
-                        <span class="research-topic-arrow">→</span>
-                    </div>
                     <div class="research-topic-card" id="ml-projects-link">
                         <span> Machine Learning Projects </span>
                         <span class="research-topic-arrow">→</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- WEB PROJECTS SUBPAGE -->
-    <div id="web-projects" class="page" style="display:none;">
-        <div class="container">
-            <div class="research-content">
-                <h2 style="margin-bottom:2rem;">Web Development Projects</h2>
-                <div class="research-papers">
-                    <div class="paper-card">
-                        <div class="paper-title">Interactive Data Visualization Platform</div>
-                        <div class="paper-desc">A comprehensive dashboard for real-time data analysis with interactive charts and customizable visualizations built with D3.js and React.</div>
-                        <div class="paper-links">
-                            <a class="paper-link" href="https://github.com/srmty09/your-repo-link" target="_blank">View on GitHub</a>
-                        </div>
-                    </div>
-                    <a href="#project" class="back-to-projects back-link">← Back to Projects</a>
                 </div>
             </div>
         </div>
@@ -1258,63 +1235,6 @@
                         </div>
                     </div>
                     <a href="#research" id="back-to-research" class="back-link">← Back to Research</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- BLOG PAGE -->
-    <div id="blog" class="page">
-        <div class="container">
-            <div class="research-content">
-                <h2>BLOG POSTS</h2>
-                <div class="research-papers">
-                    <div class="research-topic-card" id="technical-blog-link">
-                        <span> Technical Posts </span>
-                        <span class="research-topic-arrow">→</span>
-                    </div>
-                    <div class="research-topic-card" id="personal-blog-link">
-                        <span> Personal Posts </span>
-                        <span class="research-topic-arrow">→</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- TECHNICAL BLOG SUBPAGE -->
-    <div id="technical-blog" class="page" style="display:none;">
-        <div class="container">
-            <div class="research-content">
-                <h2 style="margin-bottom:2rem;">Technical Posts</h2>
-                <div class="research-papers">
-                    <div class="paper-card">
-                        <div class="paper-title">Getting Started with Web Development in 2024</div>
-                        <div class="paper-desc">A comprehensive guide for beginners looking to start their journey in web development, covering modern tools, frameworks, and best practices.</div>
-                        <div class="paper-links">
-                            <a class="paper-link" href="https://medium.com/@smruti09" target="_blank">Read on Medium</a>
-                        </div>
-                    </div>
-                    <a href="#blog" class="back-to-blog back-link">← Back to Blog</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- PERSONAL BLOG SUBPAGE -->
-    <div id="personal-blog" class="page" style="display:none;">
-        <div class="container">
-            <div class="research-content">
-                <h2 style="margin-bottom:2rem;">Personal Posts</h2>
-                <div class="research-papers">
-                    <div class="paper-card">
-                        <div class="paper-title">A Journey into Competitive Programming</div>
-                        <div class="paper-desc">Exploring the world of competitive programming, from basic algorithms to advanced data structures, and sharing my personal experiences.</div>
-                        <div class="paper-links">
-                            <a class="paper-link" href="#" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                    <a href="#blog" class="back-to-blog back-link">← Back to Blog</a>
                 </div>
             </div>
         </div>
@@ -1738,19 +1658,9 @@
         // Project detail navigation
         document.addEventListener('DOMContentLoaded', function() {
             // New project topic navigation
-            const webProjectsLink = document.getElementById('web-projects-link');
             const mlProjectsLink = document.getElementById('ml-projects-link');
             const projectsPage = document.getElementById('project');
-            const webProjectsPage = document.getElementById('web-projects');
             const mlProjectsPage = document.getElementById('ml-projects');
-
-            if (webProjectsLink) {
-                webProjectsLink.addEventListener('click', function() {
-                    projectsPage.classList.remove('active');
-                    webProjectsPage.style.display = 'block';
-                    webProjectsPage.classList.add('active');
-                });
-            }
 
             if (mlProjectsLink) {
                 mlProjectsLink.addEventListener('click', function() {
@@ -1765,10 +1675,6 @@
             backBtns.forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    if(webProjectsPage.classList.contains('active')) {
-                        webProjectsPage.classList.remove('active');
-                        webProjectsPage.style.display = 'none';
-                    }
                     if(mlProjectsPage.classList.contains('active')) {
                         mlProjectsPage.classList.remove('active');
                         mlProjectsPage.style.display = 'none';
@@ -1800,47 +1706,6 @@
                     researchPage.classList.add('active');
                 });
             }
-        });
-
-        // Blog subpage navigation
-        document.addEventListener('DOMContentLoaded', function() {
-            const technicalLink = document.getElementById('technical-blog-link');
-            const personalLink = document.getElementById('personal-blog-link');
-            const blogPage = document.getElementById('blog');
-            const technicalPage = document.getElementById('technical-blog');
-            const personalPage = document.getElementById('personal-blog');
-
-            if (technicalLink) {
-                technicalLink.addEventListener('click', function() {
-                    blogPage.classList.remove('active');
-                    technicalPage.style.display = 'block';
-                    technicalPage.classList.add('active');
-                });
-            }
-
-            if (personalLink) {
-                personalLink.addEventListener('click', function() {
-                    blogPage.classList.remove('active');
-                    personalPage.style.display = 'block';
-                    personalPage.classList.add('active');
-                });
-            }
-
-            const backBtns = document.querySelectorAll('.back-to-blog');
-            backBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    if(technicalPage.classList.contains('active')) {
-                        technicalPage.classList.remove('active');
-                        technicalPage.style.display = 'none';
-                    }
-                    if(personalPage.classList.contains('active')) {
-                        personalPage.classList.remove('active');
-                        personalPage.style.display = 'none';
-                    }
-                    blogPage.classList.add('active');
-                });
-            });
         });
     </script>
 </body>
